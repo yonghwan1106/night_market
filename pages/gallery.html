@@ -1,0 +1,1242 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>인포그래픽 갤러리 | 노량진 청춘 야시장</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/animations.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        /* 인포그래픽 갤러리 페이지 전용 스타일 */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+        
+        .infographic-card {
+            background: rgba(32, 32, 38, 0.5);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .infographic-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+        }
+        
+        .infographic-image {
+            width: 100%;
+            height: 300px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+        
+        .infographic-content {
+            padding: 25px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .infographic-title {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+        
+        .infographic-desc {
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+        
+        .infographic-tag {
+            display: inline-block;
+            padding: 5px 12px;
+            background: var(--primary);
+            color: white;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin-right: 10px;
+            margin-bottom: 10px;
+        }
+        
+        .infographic-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 20px;
+        }
+        
+        .view-btn {
+            display: inline-block;
+            padding: 8px 20px;
+            background: var(--gradient-primary);
+            color: white;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+        
+        .view-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(255, 107, 107, 0.3);
+        }
+        
+        /* 모달 스타일 */
+        .gallery-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            z-index: 2000;
+            overflow-y: auto;
+        }
+        
+        .gallery-modal-content {
+            position: relative;
+            margin: 50px auto;
+            padding: 20px;
+            width: 90%;
+            max-width: 1200px;
+            animation: modalFadeIn 0.5s ease;
+        }
+        
+        .close-gallery-modal {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            font-size: 2rem;
+            color: white;
+            cursor: pointer;
+            transition: color 0.3s ease;
+            z-index: 2100;
+        }
+        
+        .close-gallery-modal:hover {
+            color: var(--primary);
+        }
+        
+        .modal-image-container {
+            width: 100%;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .modal-image {
+            max-width: 100%;
+            max-height: 80vh;
+            border-radius: 10px;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.3);
+        }
+        
+        .modal-info {
+            color: var(--text-primary);
+            max-width: 800px;
+            margin: 0 auto;
+            background: rgba(32, 32, 38, 0.8);
+            padding: 30px;
+            border-radius: 10px;
+        }
+        
+        .modal-title {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+        
+        .modal-desc {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        
+        .modal-elements {
+            margin-top: 30px;
+        }
+        
+        .modal-elements h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--accent);
+        }
+        
+        .element-list {
+            list-style-type: disc;
+            padding-left: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .element-list li {
+            margin-bottom: 10px;
+            color: var(--text-secondary);
+        }
+        
+        /* 높이가 자동 조절되는 SVG 컨테이너 */
+        .svg-container {
+            width: 100%;
+            height: 0;
+            padding-bottom: 75%; /* 4:3 비율 */
+            position: relative;
+            background: var(--dark-light);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        
+        .svg-container svg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        
+        /* 소개 섹션 스타일 */
+        .intro-gallery {
+            margin-bottom: 50px;
+            text-align: center;
+        }
+        
+        .intro-gallery p {
+            max-width: 800px;
+            margin: 0 auto 30px;
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: var(--text-secondary);
+        }
+        
+        /* 필터 버튼 */
+        .gallery-filter {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 40px;
+        }
+        
+        .filter-btn {
+            padding: 10px 20px;
+            background: rgba(32, 32, 38, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-secondary);
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .filter-btn:hover, .filter-btn.active {
+            background: var(--gradient-primary);
+            color: white;
+            border-color: transparent;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(255, 107, 107, 0.3);
+        }
+    </style>
+</head>
+<body>
+    <!-- 네비게이션 -->
+    <nav class="main-nav">
+        <div class="nav-container">
+            <div class="logo">
+                <a href="../index.html"><span class="logo-text">NORANG<br>NIGHT</span></a>
+            </div>
+            <div class="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="../index.html#intro" class="nav-link">소개</a></li>
+                <li><a href="current-issues.html" class="nav-link">현황 분석</a></li>
+                <li><a href="issues-data.html" class="nav-link">지역 현황 데이터</a></li>
+                <li><a href="improvements.html" class="nav-link">개선 방안</a></li>
+                <li><a href="benefits.html" class="nav-link">기대 효과</a></li>
+                <li><a href="gallery.html" class="nav-link active">인포그래픽</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- 페이지 헤더 -->
+    <header class="page-header">
+        <div class="header-overlay"></div>
+        <div class="header-content">
+            <h1 class="page-title">인포그래픽 <span class="highlight">갤러리</span></h1>
+            <p class="page-subtitle">한눈에 보는 노량진 청춘 야시장</p>
+        </div>
+    </header>
+
+    <!-- 인포그래픽 갤러리 메인 섹션 -->
+    <section class="section gallery-section">
+        <div class="container">
+            <div class="intro-gallery animate-fade-up">
+                <p>노량진 청춘 나이트 마켓의 주요 내용을 시각적으로 표현한 인포그래픽 갤러리입니다. 각 인포그래픽은 프로젝트의 핵심 개념과 데이터를 효과적으로 전달하기 위해 디자인되었습니다. 이미지를 클릭하면 더 자세한 내용을 확인할 수 있습니다.</p>
+                
+                <div class="gallery-filter">
+                    <button class="filter-btn active" data-filter="all">전체 보기</button>
+                    <button class="filter-btn" data-filter="overview">프로젝트 개요</button>
+                    <button class="filter-btn" data-filter="issues">현황 분석</button>
+                    <button class="filter-btn" data-filter="improvements">개선 방안</button>
+                    <button class="filter-btn" data-filter="benefits">기대 효과</button>
+                </div>
+            </div>
+
+            <div class="gallery-grid">
+                <!-- 프로젝트 개요 인포그래픽 -->
+                <div class="infographic-card animate-fade-up" data-category="overview">
+                    <div class="infographic-image" style="background-color: #131419;">
+                        <div class="svg-container">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
+                                <defs>
+                                    <linearGradient id="bg-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                        <stop offset="0%" stop-color="#131419" />
+                                        <stop offset="100%" stop-color="#202026" />
+                                    </linearGradient>
+                                </defs>
+                                
+                                <!-- 배경 -->
+                                <rect width="800" height="600" fill="url(#bg-gradient)" />
+                                
+                                <!-- 제목 -->
+                                <text x="400" y="80" text-anchor="middle" fill="#FF6B6B" font-size="36" font-weight="bold">노량진 청춘 나이트 마켓</text>
+                                <line x1="250" y1="100" x2="550" y2="100" stroke="#FF6B6B" stroke-width="3" />
+                                
+                                <!-- 주요 컴포넌트 -->
+                                <g transform="translate(100, 150)">
+                                    <!-- 컴포넌트 1 -->
+                                    <rect x="0" y="0" width="150" height="100" rx="15" fill="#FF6B6B" fill-opacity="0.2" stroke="#FF6B6B" stroke-width="2" />
+                                    <text x="75" y="40" text-anchor="middle" fill="#FFFFFF" font-size="16">청년 창업자</text>
+                                    <text x="75" y="70" text-anchor="middle" fill="#FFFFFF" font-size="16">팝업 스토어</text>
+                                    
+                                    <!-- 컴포넌트 2 -->
+                                    <rect x="200" y="0" width="150" height="100" rx="15" fill="#7C4DFF" fill-opacity="0.2" stroke="#7C4DFF" stroke-width="2" />
+                                    <text x="275" y="40" text-anchor="middle" fill="#FFFFFF" font-size="16">문화 공연</text>
+                                    <text x="275" y="70" text-anchor="middle" fill="#FFFFFF" font-size="16">프로그램</text>
+                                    
+                                    <!-- 컴포넌트 3 -->
+                                    <rect x="400" y="0" width="150" height="100" rx="15" fill="#00BFA5" fill-opacity="0.2" stroke="#00BFA5" stroke-width="2" />
+                                    <text x="475" y="40" text-anchor="middle" fill="#FFFFFF" font-size="16">스트레스</text>
+                                    <text x="475" y="70" text-anchor="middle" fill="#FFFFFF" font-size="16">해소 공간</text>
+                                
+                                    <!-- 컴포넌트 4 -->
+                                    <rect x="100" y="150" width="150" height="100" rx="15" fill="#448AFF" fill-opacity="0.2" stroke="#448AFF" stroke-width="2" />
+                                    <text x="175" y="190" text-anchor="middle" fill="#FFFFFF" font-size="16">취업 정보</text>
+                                    <text x="175" y="220" text-anchor="middle" fill="#FFFFFF" font-size="16">공유 공간</text>
+                                    
+                                    <!-- 컴포넌트 5 -->
+                                    <rect x="300" y="150" width="150" height="100" rx="15" fill="#FF1F71" fill-opacity="0.2" stroke="#FF1F71" stroke-width="2" />
+                                    <text x="375" y="190" text-anchor="middle" fill="#FFFFFF" font-size="16">푸드 존 &</text>
+                                    <text x="375" y="220" text-anchor="middle" fill="#FFFFFF" font-size="16">네트워킹 공간</text>
+                                    
+                                    <!-- 연결선 -->
+                                    <path d="M75 100 L175 150" stroke="#FFFFFF" stroke-width="2" stroke-dasharray="5,5" />
+                                    <path d="M275 100 L275 150 L375 150" stroke="#FFFFFF" stroke-width="2" stroke-dasharray="5,5" />
+                                    <path d="M475 100 L475 150 L375 150" stroke="#FFFFFF" stroke-width="2" stroke-dasharray="5,5" />
+                                </g>
+                                
+                                <!-- 하단 정보 -->
+                                <rect x="150" y="450" width="500" height="80" rx="10" fill="rgba(255, 107, 107, 0.1)" stroke="#FF6B6B" stroke-width="2" />
+                                <text x="400" y="485" text-anchor="middle" fill="#FFFFFF" font-size="18">매월 2회 운영 (총 24회/연간)</text>
+                                <text x="400" y="515" text-anchor="middle" fill="#FFFFFF" font-size="18">금요일 및 주말 저녁 18:00-23:00</text>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="infographic-content">
+                        <h3 class="infographic-title">프로젝트 개요 인포그래픽</h3>
+                        <p class="infographic-desc">노량진 청춘 나이트 마켓의 핵심 구성요소와 운영 계획을 한눈에 파악할 수 있는 인포그래픽입니다.</p>
+                        <div>
+                            <span class="infographic-tag">프로젝트 개요</span>
+                            <span class="infographic-tag">핵심 구성</span>
+                        </div>
+                        <div class="infographic-bottom">
+                            <button class="view-btn" data-modal="overview-modal">자세히 보기</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 노량진 지역 현황 인포그래픽 -->
+                <div class="infographic-card animate-fade-up delay-100" data-category="issues">
+                    <div class="infographic-image" style="background-color: #131419;">
+                        <div class="svg-container">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
+                                <defs>
+                                    <linearGradient id="bg-gradient2" x1="0%" y1="0%" x2="100%" y2="100%">
+                                        <stop offset="0%" stop-color="#131419" />
+                                        <stop offset="100%" stop-color="#202026" />
+                                    </linearGradient>
+                                </defs>
+                                
+                                <!-- 배경 -->
+                                <rect width="800" height="600" fill="url(#bg-gradient2)" />
+                                
+                                <!-- 제목 -->
+                                <text x="400" y="60" text-anchor="middle" fill="#FF6B6B" font-size="28" font-weight="bold">노량진 지역 현황 분석</text>
+                                <line x1="250" y1="80" x2="550" y2="80" stroke="#FF6B6B" stroke-width="3" />
+                                
+                                <!-- 그래프 섹션 - 인구 구성 -->
+                                <rect x="50" y="120" width="300" height="200" rx="10" fill="rgba(255, 255, 255, 0.05)" stroke="rgba(255, 255, 255, 0.1)" stroke-width="1" />
+                                <text x="200" y="150" text-anchor="middle" fill="#FFFFFF" font-size="18">인구 구성</text>
+                                
+                                <!-- 원형 차트 (인구 구성) -->
+                                <circle cx="120" cy="220" r="60" fill="#FF6384" />
+                                <path d="M120 220 L120 160 A60 60 0 0 1 168 249 Z" fill="#36A2EB" />
+                                <path d="M120 220 L168 249 A60 60 0 0 1 72 249 Z" fill="#FFCE56" />
+                                <path d="M120 220 L72 249 A60 60 0 0 1 120 280 Z" fill="#4BC0C0" />
+                                <path d="M120 220 L120 280 A60 60 0 0 1 72 191 Z" fill="#9966FF" />
+                                
+                                <!-- 범례 -->
+                                <circle cx="210" y="185" r="6" fill="#FF6384" />
+                                <text x="225" y="190" fill="#FFFFFF" font-size="14">20대 (48%)</text>
+                                
+                                <circle cx="210" y="210" r="6" fill="#36A2EB" />
+                                <text x="225" y="215" fill="#FFFFFF" font-size="14">30대 (25%)</text>
+                                
+                                <circle cx="210" y="235" r="6" fill="#FFCE56" />
+                                <text x="225" y="240" fill="#FFFFFF" font-size="14">40대 (15%)</text>
+                                
+                                <circle cx="210" y="260" r="6" fill="#4BC0C0" />
+                                <text x="225" y="265" fill="#FFFFFF" font-size="14">50대 이상 (8%)</text>
+                                
+                                <circle cx="210" y="285" r="6" fill="#9966FF" />
+                                <text x="225" y="290" fill="#FFFFFF" font-size="14">10대 (4%)</text>
+                                
+                                <!-- 그래프 섹션 - 상권 구조 -->
+                                <rect x="450" y="120" width="300" height="200" rx="10" fill="rgba(255, 255, 255, 0.05)" stroke="rgba(255, 255, 255, 0.1)" stroke-width="1" />
+                                <text x="600" y="150" text-anchor="middle" fill="#FFFFFF" font-size="18">상권 구조</text>
+                                
+                                <!-- 막대 그래프 (상권 구조) -->
+                                <rect x="480" y="170" width="30" height="140" fill="#FF6384" />
+                                <rect x="520" y="190" width="30" height="120" fill="#36A2EB" />
+                                <rect x="560" y="230" width="30" height="80" fill="#FFCE56" />
+                                <rect x="600" y="240" width="30" height="70" fill="#4BC0C0" />
+                                <rect x="640" y="270" width="30" height="40" fill="#9966FF" />
+                                <rect x="680" y="270" width="30" height="40" fill="#FF9F40" />
+                                
+                                <!-- 범례 -->
+                                <line x1="480" y1="320" x2="710" y2="320" stroke="#FFFFFF" stroke-width="1" />
+                                <text x="495" y="340" text-anchor="middle" fill="#FFFFFF" font-size="10">학원/학습</text>
+                                <text x="535" y="340" text-anchor="middle" fill="#FFFFFF" font-size="10">식당/카페</text>
+                                <text x="575" y="340" text-anchor="middle" fill="#FFFFFF" font-size="10">고시원</text>
+                                <text x="615" y="340" text-anchor="middle" fill="#FFFFFF" font-size="10">문구/서점</text>
+                                <text x="655" y="340" text-anchor="middle" fill="#FFFFFF" font-size="10">생활편의</text>
+                                <text x="695" y="340" text-anchor="middle" fill="#FFFFFF" font-size="10">문화/여가</text>
+                                
+                                <!-- 주요 문제점 섹션 -->
+                                <rect x="100" y="360" width="600" height="180" rx="10" fill="rgba(255, 255, 255, 0.05)" stroke="rgba(255, 255, 255, 0.1)" stroke-width="1" />
+                                <text x="400" y="390" text-anchor="middle" fill="#FFFFFF" font-size="18">주요 문제점</text>
+                                
+                                <!-- 문제점 항목 -->
+                                <circle cx="150" y="425" r="8" fill="#FF6B6B" />
+                                <text x="170" y="430" fill="#FFFFFF" font-size="14">높은 스트레스 (스트레스 인지율 37%)</text>
+                                
+                                <circle cx="150" y="455" r="8" fill="#7C4DFF" />
+                                <text x="170" y="460" fill="#FFFFFF" font-size="14">사회적 고립 (단독 활동 비율 높음)</text>
+                                
+                                <circle cx="150" y="485" r="8" fill="#00BFA5" />
+                                <text x="170" y="490" fill="#FFFFFF" font-size="14">야간 문화 프로그램 부재</text>
+                                
+                                <circle cx="400" y="425" r="8" fill="#448AFF" />
+                                <text x="420" y="430" fill="#FFFFFF" font-size="14">지역 상권 위축 (매출 감소 추세)</text>
+                                
+                                <circle cx="400" y="455" r="8" fill="#FF1F71" />
+                                <text x="420" y="460" fill="#FFFFFF" font-size="14">청년 창업 기회 부족</text>
+                                
+                                <circle cx="400" y="485" r="8" fill="#FFCE56" />
+                                <text x="420" y="490" fill="#FFFFFF" font-size="14">청년 정신건강 지원 부족</text>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="infographic-content">
+                        <h3 class="infographic-title">노량진 지역 현황 분석</h3>
+                        <p class="infographic-desc">노량진 지역의 인구 구성, 상권 구조, 그리고 주요 문제점을 시각화한 인포그래픽입니다.</p>
+                        <div>
+                            <span class="infographic-tag">현황 분석</span>
+                            <span class="infographic-tag">데이터 시각화</span>
+                        </div>
+                        <div class="infographic-bottom">
+                            <button class="view-btn" data-modal="issues-modal">자세히 보기</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 공간 구성 계획 인포그래픽 -->
+                <div class="infographic-card animate-fade-up delay-200" data-category="improvements">
+                    <div class="infographic-image" style="background-color: #131419;">
+                        <div class="svg-container">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
+                                <defs>
+                                    <linearGradient id="bg-gradient3" x1="0%" y1="0%" x2="100%" y2="100%">
+                                        <stop offset="0%" stop-color="#131419" />
+                                        <stop offset="100%" stop-color="#202026" />
+                                    </linearGradient>
+                                </defs>
+                                
+                                <!-- 배경 -->
+                                <rect width="800" height="600" fill="url(#bg-gradient3)" />
+                                
+                                <!-- 제목 -->
+                                <text x="400" y="60" text-anchor="middle" fill="#7C4DFF" font-size="28" font-weight="bold">노량진 청춘 나이트 마켓 공간 구성</text>
+                                <line x1="250" y1="80" x2="550" y2="80" stroke="#7C4DFF" stroke-width="3" />
+                                
+                                <!-- 공간 맵 -->
+                                <rect x="100" y="120" width="600" height="400" rx="20" fill="rgba(255, 255, 255, 0.05)" stroke="rgba(255, 255, 255, 0.1)" stroke-width="2" />
+                                
+                                <!-- 영역: 청년 창업자 팝업 스토어 존 -->
+                                <rect x="150" y="170" width="250" height="150" fill="#FF5252" fill-opacity="0.2" stroke="#FF5252" stroke-width="2" rx="10" ry="10" />
+                                <text x="275" y="200" text-anchor="middle" fill="#FFFFFF" font-size="16">청년 창업자 팝업 스토어 존</text>
+                                <text x="275" y="225" text-anchor="middle" fill="#FFFFFF" font-size="14">(40%)</text>
+                                
+                                <!-- 영역: 취업 정보 공유 존 -->
+                                <rect x="450" y="170" width="200" height="120" fill="#448AFF" fill-opacity="0.2" stroke="#448AFF" stroke-width="2" rx="10" ry="10" />
+                                <text x="550" y="200" text-anchor="middle" fill="#FFFFFF" font-size="16">취업 정보 공유 존</text>
+                                <text x="550" y="225" text-anchor="middle" fill="#FFFFFF" font-size="14">(15%)</text>
+                                
+                                <!-- 영역: 문화 공연 존 -->
+                                <rect x="450" y="340" width="200" height="150" fill="#7C4DFF" fill-opacity="0.2" stroke="#7C4DFF" stroke-width="2" rx="10" ry="10" />
+                                <text x="550" y="370" text-anchor="middle" fill="#FFFFFF" font-size="16">문화 공연 존</text>
+                                <text x="550" y="395" text-anchor="middle" fill="#FFFFFF" font-size="14">(20%)</text>
+                                
+                                <!-- 영역: 푸드 존 & 네트워킹 공간 -->
+                                <rect x="150" y="340" width="250" height="150" fill="#00BFA5" fill-opacity="0.2" stroke="#00BFA5" stroke-width="2" rx="10" ry="10" />
+                                <text x="275" y="370" text-anchor="middle" fill="#FFFFFF" font-size="16">푸드 존 & 네트워킹 공간</text>
+                                <text x="275" y="395" text-anchor="middle" fill="#FFFFFF" font-size="14">(25%)</text>
+                                
+                                <!-- 경로 및 연결 -->
+                                <path d="M275 320 L275 340" stroke="#FFFFFF" stroke-width="2" stroke-dasharray="5,5" fill="none" />
+                                <path d="M400 220 L450 220" stroke="#FFFFFF" stroke-width="2" stroke-dasharray="5,5" fill="none" />
+                                <path d="M400 400 L450 400" stroke="#FFFFFF" stroke-width="2" stroke-dasharray="5,5" fill="none" />
+                                <path d="M550 290 L550 340" stroke="#FFFFFF" stroke-width="2" stroke-dasharray="5,5" fill="none" />
+                                
+                                <!-- 메인 입구 표시 -->
+                                <polygon points="400,520 380,490 420,490" fill="#FFFFFF" />
+                                <text x="400" y="480" text-anchor="middle" fill="#FFFFFF" font-size="14">메인 입구</text>
+                                
+                                <!-- 범례 -->
+                                <rect x="100" y="540" width="15" height="15" fill="#FF5252" fill-opacity="0.5" />
+                                <text x="125" y="552" fill="#FFFFFF" font-size="12">청년 창업자 팝업 스토어 존</text>
+                                
+                                <rect x="280" y="540" width="15" height="15" fill="#448AFF" fill-opacity="0.5" />
+                                <text x="305" y="552" fill="#FFFFFF" font-size="12">취업 정보 공유 존</text>
+                                
+                                <rect x="440" y="540" width="15" height="15" fill="#7C4DFF" fill-opacity="0.5" />
+                                <text x="465" y="552" fill="#FFFFFF" font-size="12">문화 공연 존</text>
+                                
+                                <rect x="580" y="540" width="15" height="15" fill="#00BFA5" fill-opacity="0.5" />
+                                <text x="605" y="552" fill="#FFFFFF" font-size="12">푸드 존 & 네트워킹 공간</text>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="infographic-content">
+                        <h3 class="infographic-title">공간 구성 계획</h3>
+                        <p class="infographic-desc">노량진 청춘 나이트 마켓의 공간 구성을 시각화한 인포그래픽입니다. 각 구역의 용도와 비율을 한눈에 파악할 수 있습니다.</p>
+                        <div>
+                            <span class="infographic-tag">개선 방안</span>
+                            <span class="infographic-tag">공간 구성</span>
+                        </div>
+                        <div class="infographic-bottom">
+                            <button class="view-btn" data-modal="space-modal">자세히 보기</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 프로그램 구성 인포그래픽 -->
+                <div class="infographic-card animate-fade-up delay-300" data-category="improvements">
+                    <div class="infographic-image" style="background-color: #131419;">
+                        <div class="svg-container">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
+                                <defs>
+                                    <linearGradient id="bg-gradient4" x1="0%" y1="0%" x2="100%" y2="100%">
+                                        <stop offset="0%" stop-color="#131419" />
+                                        <stop offset="100%" stop-color="#202026" />
+                                    </linearGradient>
+                                </defs>
+                                
+                                <!-- 배경 -->
+                                <rect width="800" height="600" fill="url(#bg-gradient4)" />
+                                
+                                <!-- 제목 -->
+                                <text x="400" y="60" text-anchor="middle" fill="#00BFA5" font-size="28" font-weight="bold">프로그램 구성 인포그래픽</text>
+                                <line x1="250" y1="80" x2="550" y2="80" stroke="#00BFA5" stroke-width="3" />
+                                
+                                <!-- 시간표 레이아웃 -->
+                                <rect x="100" y="120" width="600" height="360" rx="10" fill="rgba(255, 255, 255, 0.05)" stroke="rgba(255, 255, 255, 0.1)" stroke-width="1" />
+                                
+                                <!-- 시간 표시 -->
+                                <line x1="100" y1="170" x2="700" y2="170" stroke="#FFFFFF" stroke-width="1" stroke-opacity="0.3" />
+                                <text x="90" y="170" text-anchor="end" fill="#FFFFFF" font-size="14">18:00</text>
+                                
+                                <line x1="100" y1="220" x2="700" y2="220" stroke="#FFFFFF" stroke-width="1" stroke-opacity="0.3" />
+                                <text x="90" y="220" text-anchor="end" fill="#FFFFFF" font-size="14">19:00</text>
+                                
+                                <line x1="100" y1="270" x2="700" y2="270" stroke="#FFFFFF" stroke-width="1" stroke-opacity="0.3" />
+                                <text x="90" y="270" text-anchor="end" fill="#FFFFFF" font-size="14">20:00</text>
+                                
+                                <line x1="100" y1="320" x2="700" y2="320" stroke="#FFFFFF" stroke-width="1" stroke-opacity="0.3" />
+                                <text x="90" y="320" text-anchor="end" fill="#FFFFFF" font-size="14">21:00</text>
+                                
+                                <line x1="100" y1="370" x2="700" y2="370" stroke="#FFFFFF" stroke-width="1" stroke-opacity="0.3" />
+                                <text x="90" y="370" text-anchor="end" fill="#FFFFFF" font-size="14">22:00</text>
+                                
+                                <line x1="100" y1="420" x2="700" y2="420" stroke="#FFFFFF" stroke-width="1" stroke-opacity="0.3" />
+                                <text x="90" y="420" text-anchor="end" fill="#FFFFFF" font-size="14">23:00</text>
+                                
+                                <!-- 공간 구분 -->
+                                <text x="200" y="150" text-anchor="middle" fill="#FFFFFF" font-size="14">청년 창업 지원</text>
+                                <text x="350" y="150" text-anchor="middle" fill="#FFFFFF" font-size="14">스트레스 해소</text>
+                                <text x="500" y="150" text-anchor="middle" fill="#FFFFFF" font-size="14">취업 지원</text>
+                                <text x="650" y="150" text-anchor="middle" fill="#FFFFFF" font-size="14">문화 공연</text>
+                                
+                                <line x1="275" y1="120" x2="275" y2="480" stroke="#FFFFFF" stroke-width="1" stroke-opacity="0.3" />
+                                <line x1="425" y1="120" x2="425" y2="480" stroke="#FFFFFF" stroke-width="1" stroke-opacity="0.3" />
+                                <line x1="575" y1="120" x2="575" y2="480" stroke="#FFFFFF" stroke-width="1" stroke-opacity="0.3" />
+                                
+                                <!-- 프로그램 블록 -->
+                                <rect x="125" y="180" width="150" height="50" rx="5" fill="#FF6B6B" fill-opacity="0.7" />
+                                <text x="200" y="210" text-anchor="middle" fill="#FFFFFF" font-size="12">팝업 스토어 운영</text>
+                                
+                                <rect x="125" y="240" width="150" height="80" rx="5" fill="#FF6B6B" fill-opacity="0.7" />
+                                <text x="200" y="280" text-anchor="middle" fill="#FFFFFF" font-size="12">창업 멘토링 클리닉</text>
+                                
+                                <rect x="125" y="330" width="150" height="90" rx="5" fill="#FF6B6B" fill-opacity="0.7" />
+                                <text x="200" y="375" text-anchor="middle" fill="#FFFFFF" font-size="12">미니 MBA 강좌</text>
+                                
+                                <rect x="275" y="180" width="150" height="70" rx="5" fill="#00BFA5" fill-opacity="0.7" />
+                                <text x="350" y="215" text-anchor="middle" fill="#FFFFFF" font-size="12">야외 요가 & 스트레칭</text>
+                                
+                                <rect x="275" y="260" width="150" height="160" rx="5" fill="#00BFA5" fill-opacity="0.7" />
+                                <text x="350" y="340" text-anchor="middle" fill="#FFFFFF" font-size="12">예술 치유 프로그램</text>
+                                
+                                <rect x="425" y="180" width="150" height="100" rx="5" fill="#448AFF" fill-opacity="0.7" />
+                                <text x="500" y="230" text-anchor="middle" fill="#FFFFFF" font-size="12">이력서 & 자기소개서 클리닉</text>
+                                
+                                <rect x="425" y="290" width="150" height="130" rx="5" fill="#448AFF" fill-opacity="0.7" />
+                                <text x="500" y="355" text-anchor="middle" fill="#FFFFFF" font-size="12">모의 면접 프로그램</text>
+                                
+                                <rect x="575" y="180" width="125" height="50" rx="5" fill="#7C4DFF" fill-opacity="0.7" />
+                                <text x="637" y="210" text-anchor="middle" fill="#FFFFFF" font-size="12">어쿠스틱 세션</text>
+                                
+                                <rect x="575" y="240" width="125" height="50" rx="5" fill="#7C4DFF" fill-opacity="0.7" />
+                                <text x="637" y="270" text-anchor="middle" fill="#FFFFFF" font-size="12">인디 뮤지션 쇼케이스</text>
+                                
+                                <rect x="575" y="300" width="125" height="50" rx="5" fill="#7C4DFF" fill-opacity="0.7" />
+                                <text x="637" y="330" text-anchor="middle" fill="#FFFFFF" font-size="12">메인 공연</text>
+                                
+                                <rect x="575" y="360" width="125" height="60" rx="5" fill="#7C4DFF" fill-opacity="0.7" />
+                                <text x="637" y="390" text-anchor="middle" fill="#FFFFFF" font-size="12">참여형 프로그램</text>
+                                
+                                <!-- 범례 -->
+                                <rect x="150" y="500" width="15" height="15" fill="#FF6B6B" fill-opacity="0.7" />
+                                <text x="175" y="512" fill="#FFFFFF" font-size="12">청년 창업 지원</text>
+                                
+                                <rect x="300" y="500" width="15" height="15" fill="#00BFA5" fill-opacity="0.7" />
+                                <text x="325" y="512" fill="#FFFFFF" font-size="12">스트레스 해소</text>
+                                
+                                <rect x="450" y="500" width="15" height="15" fill="#448AFF" fill-opacity="0.7" />
+                                <text x="475" y="512" fill="#FFFFFF" font-size="12">취업 지원</text>
+                                
+                                <rect x="600" y="500" width="15" height="15" fill="#7C4DFF" fill-opacity="0.7" />
+                                <text x="625" y="512" fill="#FFFFFF" font-size="12">문화 공연</text>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="infographic-content">
+                        <h3 class="infographic-title">프로그램 구성 타임테이블</h3>
+                        <p class="infographic-desc">노량진 청춘 나이트 마켓에서 진행되는 다양한 프로그램의 시간표를 시각화한 인포그래픽입니다.</p>
+                        <div>
+                            <span class="infographic-tag">개선 방안</span>
+                            <span class="infographic-tag">프로그램 구성</span>
+                        </div>
+                        <div class="infographic-bottom">
+                            <button class="view-btn" data-modal="program-modal">자세히 보기</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 기대 효과 인포그래픽 -->
+                <div class="infographic-card animate-fade-up delay-400" data-category="benefits">
+                    <div class="infographic-image" style="background-color: #131419;">
+                        <div class="svg-container">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
+                                <defs>
+                                    <linearGradient id="bg-gradient5" x1="0%" y1="0%" x2="100%" y2="100%">
+                                        <stop offset="0%" stop-color="#131419" />
+                                        <stop offset="100%" stop-color="#202026" />
+                                    </linearGradient>
+                                </defs>
+                                
+                                <!-- 배경 -->
+                                <rect width="800" height="600" fill="url(#bg-gradient5)" />
+                                
+                                <!-- 제목 -->
+                                <text x="400" y="60" text-anchor="middle" fill="#FF1F71" font-size="28" font-weight="bold">기대 효과 인포그래픽</text>
+                                <line x1="250" y1="80" x2="550" y2="80" stroke="#FF1F71" stroke-width="3" />
+                                
+                                <!-- 원형 차트 영역 -->
+                                <g transform="translate(400, 250)">
+                                    <!-- 주요 효과 원형 -->
+                                    <circle cx="0" cy="0" r="150" fill="none" stroke="#FF1F71" stroke-width="2" stroke-opacity="0.3" />
+                                    
+                                    <!-- 내부 원 -->
+                                    <circle cx="0" cy="0" r="70" fill="#FF1F71" fill-opacity="0.2" stroke="#FF1F71" stroke-width="2" />
+                                    <text x="0" y="0" text-anchor="middle" alignment-baseline="middle" fill="#FFFFFF" font-size="16" font-weight="bold">노량진 청춘</text>
+                                    <text x="0" y="25" text-anchor="middle" alignment-baseline="middle" fill="#FFFFFF" font-size="16" font-weight="bold">나이트 마켓</text>
+                                    
+                                    <!-- 효과 노드 1: 지역 이미지 개선 -->
+                                    <g transform="translate(-106, -106)"> <!-- 위치: 150 * cos(45°), 150 * sin(45°) -->
+                                        <circle r="40" fill="#FF6B6B" fill-opacity="0.7" />
+                                        <text x="0" y="-5" text-anchor="middle" fill="#FFFFFF" font-size="12" font-weight="bold">지역 이미지</text>
+                                        <text x="0" y="15" text-anchor="middle" fill="#FFFFFF" font-size="12" font-weight="bold">개선</text>
+                                    </g>
+                                    
+                                    <!-- 효과 노드 2: 청년 정신 건강 증진 -->
+                                    <g transform="translate(106, -106)"> <!-- 위치: 150 * cos(45°), -150 * sin(45°) -->
+                                        <circle r="40" fill="#00BFA5" fill-opacity="0.7" />
+                                        <text x="0" y="-5" text-anchor="middle" fill="#FFFFFF" font-size="12" font-weight="bold">청년 정신</text>
+                                        <text x="0" y="15" text-anchor="middle" fill="#FFFFFF" font-size="12" font-weight="bold">건강 증진</text>
+                                    </g>
+                                    
+                                    <!-- 효과 노드 3: 지역 경제 활성화 -->
+                                    <g transform="translate(106, 106)"> <!-- 위치: 150 * cos(135°), -150 * sin(135°) -->
+                                        <circle r="40" fill="#7C4DFF" fill-opacity="0.7" />
+                                        <text x="0" y="-5" text-anchor="middle" fill="#FFFFFF" font-size="12" font-weight="bold">지역 경제</text>
+                                        <text x="0" y="15" text-anchor="middle" fill="#FFFFFF" font-size="12" font-weight="bold">활성화</text>
+                                    </g>
+                                    
+                                    <!-- 효과 노드 4: 청년 창업 지원 -->
+                                    <g transform="translate(-106, 106)"> <!-- 위치: 150 * cos(135°), 150 * sin(135°) -->
+                                        <circle r="40" fill="#448AFF" fill-opacity="0.7" />
+                                        <text x="0" y="-5" text-anchor="middle" fill="#FFFFFF" font-size="12" font-weight="bold">청년 창업</text>
+                                        <text x="0" y="15" text-anchor="middle" fill="#FFFFFF" font-size="12" font-weight="bold">지원</text>
+                                    </g>
+                                    
+                                    <!-- 연결선 -->
+                                    <line x1="0" y1="0" x2="-106" y2="-106" stroke="#FFFFFF" stroke-width="2" stroke-opacity="0.5" />
+                                    <line x1="0" y1="0" x2="106" y2="-106" stroke="#FFFFFF" stroke-width="2" stroke-opacity="0.5" />
+                                    <line x1="0" y1="0" x2="106" y2="106" stroke="#FFFFFF" stroke-width="2" stroke-opacity="0.5" />
+                                    <line x1="0" y1="0" x2="-106" y2="106" stroke="#FFFFFF" stroke-width="2" stroke-opacity="0.5" />
+                                </g>
+                                
+                                <!-- 수치 영역 -->
+                                <rect x="100" y="430" width="600" height="120" rx="10" fill="rgba(255, 255, 255, 0.05)" stroke="rgba(255, 255, 255, 0.1)" stroke-width="1" />
+                                
+                                <!-- 효과 수치 1 -->
+                                <text x="175" y="460" text-anchor="middle" fill="#FF6B6B" font-size="24" font-weight="bold">150%</text>
+                                <text x="175" y="485" text-anchor="middle" fill="#FFFFFF" font-size="12">지역 브랜드 가치</text>
+                                <text x="175" y="505" text-anchor="middle" fill="#FFFFFF" font-size="12">상승 예상</text>
+                                
+                                <!-- 효과 수치 2 -->
+                                <text x="325" y="460" text-anchor="middle" fill="#00BFA5" font-size="24" font-weight="bold">25%</text>
+                                <text x="325" y="485" text-anchor="middle" fill="#FFFFFF" font-size="12">학습 효율성</text>
+                                <text x="325" y="505" text-anchor="middle" fill="#FFFFFF" font-size="12">향상 예상</text>
+                                
+                                <!-- 효과 수치 3 -->
+                                <text x="475" y="460" text-anchor="middle" fill="#7C4DFF" font-size="24" font-weight="bold">15-20%</text>
+                                <text x="475" y="485" text-anchor="middle" fill="#FFFFFF" font-size="12">지역 상권 매출</text>
+                                <text x="475" y="505" text-anchor="middle" fill="#FFFFFF" font-size="12">증가 예상</text>
+                                
+                                <!-- 효과 수치 4 -->
+                                <text x="625" y="460" text-anchor="middle" fill="#448AFF" font-size="24" font-weight="bold">2배</text>
+                                <text x="625" y="485" text-anchor="middle" fill="#FFFFFF" font-size="12">창업 성공률</text>
+                                <text x="625" y="505" text-anchor="middle" fill="#FFFFFF" font-size="12">향상 예상</text>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="infographic-content">
+                        <h3 class="infographic-title">기대 효과 인포그래픽</h3>
+                        <p class="infographic-desc">노량진 청춘 나이트 마켓이 가져올 다양한 기대 효과와 예상 수치를 시각화한 인포그래픽입니다.</p>
+                        <div>
+                            <span class="infographic-tag">기대 효과</span>
+                            <span class="infographic-tag">데이터 시각화</span>
+                        </div>
+                        <div class="infographic-bottom">
+                            <button class="view-btn" data-modal="benefits-modal">자세히 보기</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 방문객 예측 인포그래픽 -->
+                <div class="infographic-card animate-fade-up delay-500" data-category="benefits">
+                    <div class="infographic-image" style="background-color: #131419;">
+                        <div class="svg-container">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
+                                <defs>
+                                    <linearGradient id="bg-gradient6" x1="0%" y1="0%" x2="100%" y2="100%">
+                                        <stop offset="0%" stop-color="#131419" />
+                                        <stop offset="100%" stop-color="#202026" />
+                                    </linearGradient>
+                                </defs>
+                                
+                                <!-- 배경 -->
+                                <rect width="800" height="600" fill="url(#bg-gradient6)" />
+                                
+                                <!-- 제목 -->
+                                <text x="400" y="60" text-anchor="middle" fill="#FFCE56" font-size="28" font-weight="bold">방문객 예측 인포그래픽</text>
+                                <line x1="250" y1="80" x2="550" y2="80" stroke="#FFCE56" stroke-width="3" />
+                                
+                                <!-- 그래프 영역 -->
+                                <rect x="100" y="120" width="600" height="350" rx="10" fill="rgba(255, 255, 255, 0.05)" stroke="rgba(255, 255, 255, 0.1)" stroke-width="1" />
+                                
+                                <!-- 축 -->
+                                <line x1="150" y1="400" x2="650" y2="400" stroke="#FFFFFF" stroke-width="2" />
+                                <line x1="150" y1="150" x2="150" y2="400" stroke="#FFFFFF" stroke-width="2" />
+                                
+                                <!-- X축 레이블 -->
+                                <text x="200" y="425" text-anchor="middle" fill="#FFFFFF" font-size="12">3개월</text>
+                                <text x="275" y="425" text-anchor="middle" fill="#FFFFFF" font-size="12">6개월</text>
+                                <text x="350" y="425" text-anchor="middle" fill="#FFFFFF" font-size="12">1년</text>
+                                <text x="425" y="425" text-anchor="middle" fill="#FFFFFF" font-size="12">1년 6개월</text>
+                                <text x="500" y="425" text-anchor="middle" fill="#FFFFFF" font-size="12">2년</text>
+                                <text x="575" y="425" text-anchor="middle" fill="#FFFFFF" font-size="12">2년 6개월</text>
+                                
+                                <!-- Y축 레이블 -->
+                                <text x="135" y="380" text-anchor="end" fill="#FFFFFF" font-size="12">0</text>
+                                <text x="135" y="330" text-anchor="end" fill="#FFFFFF" font-size="12">5천</text>
+                                <text x="135" y="280" text-anchor="end" fill="#FFFFFF" font-size="12">1만</text>
+                                <text x="135" y="230" text-anchor="end" fill="#FFFFFF" font-size="12">1만 5천</text>
+                                <text x="135" y="180" text-anchor="end" fill="#FFFFFF" font-size="12">2만</text>
+                                
+                                <!-- 그리드 라인 -->
+                                <line x1="150" y1="330" x2="650" y2="330" stroke="#FFFFFF" stroke-width="1" stroke-opacity="0.1" />
+                                <line x1="150" y1="280" x2="650" y2="280" stroke="#FFFFFF" stroke-width="1" stroke-opacity="0.1" />
+                                <line x1="150" y1="230" x2="650" y2="230" stroke="#FFFFFF" stroke-width="1" stroke-opacity="0.1" />
+                                <line x1="150" y1="180" x2="650" y2="180" stroke="#FFFFFF" stroke-width="1" stroke-opacity="0.1" />
+                                
+                                <!-- 데이터 라인 - 수험생 방문객 -->
+                                <polyline points="200,360 275,340 350,320 425,310 500,305 575,300" fill="none" stroke="#FF6384" stroke-width="3" />
+                                
+                                <!-- 데이터 라인 - 일반 청년 방문객 -->
+                                <polyline points="200,370 275,350 350,320 425,300 500,280 575,260" fill="none" stroke="#36A2EB" stroke-width="3" />
+                                
+                                <!-- 데이터 라인 - 관광객 방문객 -->
+                                <polyline points="200,390 275,370 350,340 425,310 500,280 575,250" fill="none" stroke="#FFCE56" stroke-width="3" />
+                                
+                                <!-- 데이터 포인트 - 수험생 방문객 -->
+                                <circle cx="200" cy="360" r="5" fill="#FF6384" />
+                                <circle cx="275" cy="340" r="5" fill="#FF6384" />
+                                <circle cx="350" cy="320" r="5" fill="#FF6384" />
+                                <circle cx="425" cy="310" r="5" fill="#FF6384" />
+                                <circle cx="500" cy="305" r="5" fill="#FF6384" />
+                                <circle cx="575" cy="300" r="5" fill="#FF6384" />
+                                
+                                <!-- 데이터 포인트 - 일반 청년 방문객 -->
+                                <circle cx="200" cy="370" r="5" fill="#36A2EB" />
+                                <circle cx="275" cy="350" r="5" fill="#36A2EB" />
+                                <circle cx="350" cy="320" r="5" fill="#36A2EB" />
+                                <circle cx="425" cy="300" r="5" fill="#36A2EB" />
+                                <circle cx="500" cy="280" r="5" fill="#36A2EB" />
+                                <circle cx="575" cy="260" r="5" fill="#36A2EB" />
+                                
+                                <!-- 데이터 포인트 - 관광객 방문객 -->
+                                <circle cx="200" cy="390" r="5" fill="#FFCE56" />
+                                <circle cx="275" cy="370" r="5" fill="#FFCE56" />
+                                <circle cx="350" cy="340" r="5" fill="#FFCE56" />
+                                <circle cx="425" cy="310" r="5" fill="#FFCE56" />
+                                <circle cx="500" cy="280" r="5" fill="#FFCE56" />
+                                <circle cx="575" cy="250" r="5" fill="#FFCE56" />
+                                
+                                <!-- 범례 -->
+                                <rect x="170" y="480" width="15" height="15" fill="#FF6384" />
+                                <text x="195" y="492" fill="#FFFFFF" font-size="12">수험생 방문객</text>
+                                
+                                <rect x="350" y="480" width="15" height="15" fill="#36A2EB" />
+                                <text x="375" y="492" fill="#FFFFFF" font-size="12">일반 청년 방문객</text>
+                                
+                                <rect x="530" y="480" width="15" height="15" fill="#FFCE56" />
+                                <text x="555" y="492" fill="#FFFFFF" font-size="12">관광객</text>
+                                
+                                <!-- 예상 수치 -->
+                                <text x="400" y="150" text-anchor="middle" fill="#FFFFFF" font-size="16" font-weight="bold">3년 내 월간 방문객 20,000명 돌파 예상</text>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="infographic-content">
+                        <h3 class="infographic-title">방문객 예측 인포그래픽</h3>
+                        <p class="infographic-desc">노량진 청춘 나이트 마켓의 방문객 수 예측을 시간 흐름에 따라 시각화한 인포그래픽입니다.</p>
+                        <div>
+                            <span class="infographic-tag">기대 효과</span>
+                            <span class="infographic-tag">방문객 예측</span>
+                        </div>
+                        <div class="infographic-bottom">
+                            <button class="view-btn" data-modal="visitors-modal">자세히 보기</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 모달 영역 -->
+    <!-- 프로젝트 개요 모달 -->
+    <div id="overview-modal" class="gallery-modal">
+        <div class="gallery-modal-content">
+            <span class="close-gallery-modal">&times;</span>
+            <div class="modal-image-container">
+                <img src="../svg/project_overview.svg" alt="프로젝트 개요 인포그래픽" class="modal-image">
+            </div>
+            <div class="modal-info">
+                <h2 class="modal-title">프로젝트 개요 인포그래픽</h2>
+                <p class="modal-desc">노량진 청춘 나이트 마켓은 수험생과 청년들을 위한 야간 문화 축제입니다. 이 프로젝트는 노량진 지역의 수험생들과 청년들에게 스트레스 해소와 문화 생활 기회를 제공하고, 지역 경제를 활성화하는 것을 목표로 합니다.</p>
+                <div class="modal-elements">
+                    <h3>주요 구성 요소</h3>
+                    <ul class="element-list">
+                        <li><strong>청년 창업자 팝업 스토어</strong>: 청년 창업자들에게 저비용으로 사업 아이디어를 시험할 수 있는 기회 제공</li>
+                        <li><strong>문화 공연 프로그램</strong>: 다양한 장르의 공연과 문화 행사를 통한 야간 문화 생활 지원</li>
+                        <li><strong>스트레스 해소 공간</strong>: 수험생들의 정신 건강 증진을 위한 다양한 스트레스 해소 프로그램 운영</li>
+                        <li><strong>취업 정보 공유 공간</strong>: 취업 준비생들을 위한 정보 공유와 네트워킹 기회 제공</li>
+                        <li><strong>푸드 존 & 네트워킹 공간</strong>: 다양한 음식과 함께 소통할 수 있는 교류의 장 마련</li>
+                    </ul>
+                </div>
+                <div class="modal-elements">
+                    <h3>운영 계획</h3>
+                    <ul class="element-list">
+                        <li><strong>운영 시간</strong>: 매월 둘째, 넷째 금요일 및 해당 주말 저녁 18:00-23:00</li>
+                        <li><strong>운영 장소</strong>: 노량진역 1번 출구 인근 공공 공간 및 노량진 메가스터디타워 인접 광장</li>
+                        <li><strong>연간 운영</strong>: 총 24회 개최 (매월 2회, 12개월)</li>
+                        <li><strong>계절별 탄력 운영</strong>: 여름(19:00-24:00), 겨울(17:00-22:00)로 시간 조정</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 노량진 지역 현황 모달 -->
+    <div id="issues-modal" class="gallery-modal">
+        <div class="gallery-modal-content">
+            <span class="close-gallery-modal">&times;</span>
+            <div class="modal-image-container">
+                <img src="../svg/issues_analysis.svg" alt="노량진 지역 현황 분석" class="modal-image">
+            </div>
+            <div class="modal-info">
+                <h2 class="modal-title">노량진 지역 현황 분석</h2>
+                <p class="modal-desc">노량진은 서울특별시 동작구에 위치한 지역으로, 전국 최대 규모의 공무원 시험 준비생(공시생)과 각종 국가고시 준비생이 집중된 '고시촌'으로 알려져 있습니다. 하지만 최근 변화하는 환경 속에서 다양한 문제점이 발생하고 있습니다.</p>
+                <div class="modal-elements">
+                    <h3>인구 구성 및 특성</h3>
+                    <ul class="element-list">
+                        <li><strong>20대 비중 높음</strong>: 전체 인구의 약 48%가 20대로 청년 인구 비중이 높음</li>
+                        <li><strong>수험생 중심 구성</strong>: 노량진 내 거주 시설 입주자의 99%가 수험생</li>
+                        <li><strong>단기 거주자 많음</strong>: 평균 거주 기간 1-2년의 유동 인구 비중 높음</li>
+                    </ul>
+                </div>
+                <div class="modal-elements">
+                    <h3>상권 구조 분석</h3>
+                    <ul class="element-list">
+                        <li><strong>학원 및 학습 관련 업종</strong>: 전체 상권의 약 40%가 학원 및 학습 관련 시설</li>
+                        <li><strong>식당 및 카페</strong>: 약 30%가 식당 및 카페로 구성</li>
+                        <li><strong>고시원 및 주거 시설</strong>: 약 15%가 고시원 등 주거 시설</li>
+                        <li><strong>문화/여가 시설 부족</strong>: 문화 및 여가 관련 시설은 5% 미만으로 매우 부족</li>
+                    </ul>
+                </div>
+                <div class="modal-elements">
+                    <h3>주요 문제점</h3>
+                    <ul class="element-list">
+                        <li><strong>높은 스트레스</strong>: 20대의 스트레스 인지율이 37%로 매우 높음</li>
+                        <li><strong>사회적 고립감</strong>: 수험생들이 개인적 학습에 집중하면서 사회적 고립 경험</li>
+                        <li><strong>야간 문화 프로그램 부재</strong>: 저녁 시간대 여가 활동을 위한 문화 프로그램 전무</li>
+                        <li><strong>지역 상권 위축</strong>: 온라인 강의 확산으로 오프라인 학원가 및 주변 상권 침체</li>
+                        <li><strong>청년 창업 기회 부족</strong>: 청년들의 아이디어를 실험하고 발전시킬 플랫폼 부재</li>
+                        <li><strong>청년 정신건강 지원 부족</strong>: 수험생 특화 정신 건강 지원 인프라 미흡</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 공간 구성 모달 -->
+    <div id="space-modal" class="gallery-modal">
+        <div class="gallery-modal-content">
+            <span class="close-gallery-modal">&times;</span>
+            <div class="modal-image-container">
+                <img src="../svg/space_layout.svg" alt="공간 구성 계획" class="modal-image">
+            </div>
+            <div class="modal-info">
+                <h2 class="modal-title">공간 구성 계획</h2>
+                <p class="modal-desc">노량진 청춘 나이트 마켓은 다양한 목적과 활동을 위한 공간으로 구성되어 있습니다. 전체 공간은 청년들의 니즈를 충족시키는 네 개의 주요 영역으로 나뉘어 있으며, 각 영역은 유기적으로 연결되어 전체적인 경험을 향상시킵니다.</p>
+                <div class="modal-elements">
+                    <h3>청년 창업자 팝업 스토어 존 (40%)</h3>
+                    <ul class="element-list">
+                        <li><strong>부스 유형</strong>: 일반 판매형, 체험형, 서비스형, 공유형 등 다양한 형태로 구성</li>
+                        <li><strong>테마별 섹션</strong>: 리빙 & 라이프스타일, 패션 & 액세서리, 푸드 & 베버리지, 디지털 & 캐릭터, 아트 & 크래프트</li>
+                        <li><strong>창업 지원 시스템</strong>: 멘토링 코너, 피드백 수집 시스템, 인큐베이팅 프로그램 연계</li>
+                    </ul>
+                </div>
+                <div class="modal-elements">
+                    <h3>취업 정보 공유 존 (15%)</h3>
+                    <ul class="element-list">
+                        <li><strong>취업 정보 디지털 월</strong>: 실시간 채용 정보, 공무원 시험 정보, 직무별 채용 트렌드 시각화</li>
+                        <li><strong>모의 면접 부스</strong>: AI 면접 시스템을 활용한 모의 면접 체험 공간</li>
+                        <li><strong>이력서 클리닉 존</strong>: 전문가에게 이력서와 자기소개서 첨삭을 받을 수 있는 공간</li>
+                        <li><strong>커리어 라이브러리</strong>: 직무별, 산업별 채용 정보와 관련 서적 비치</li>
+                    </ul>
+                </div>
+                <div class="modal-elements">
+                    <h3>문화 공연 존 (20%)</h3>
+                    <ul class="element-list">
+                        <li><strong>메인 스테이지</strong>: 다양한 공연을 위한 무대와 객석 공간</li>
+                        <li><strong>음향 및 조명 시스템</strong>: 고품질 공연을 위한 기본 음향 및 조명 시설</li>
+                        <li><strong>공연 유형</strong>: 어쿠스틱 공연, 청년 아티스트 쇼케이스, 메인 공연, 참여형 프로그램</li>
+                        <li><strong>라이브 스트리밍</strong>: 공연 실황 온라인 중계 및 아카이빙</li>
+                    </ul>
+                </div>
+                <div class="modal-elements">
+                    <h3>푸드 존 & 네트워킹 공간 (25%)</h3>
+                    <ul class="element-list">
+                        <li><strong>푸드 트럭 및 부스</strong>: 지역 특색 푸드 트럭, 청년 창업 푸드 트럭, 핑거푸드 부스, 음료 바</li>
+                        <li><strong>테마별 테이블</strong>: 관심사, 준비 시험, 직업군 등 테마별로 구분된 소통 공간</li>
+                        <li><strong>스피드 네트워킹 존</strong>: 짧은 시간 내에 다양한 사람들과 교류할 수 있는 프로그램 운영 공간</li>
+                        <li><strong>친환경 운영</strong>: 다회용 식기 대여 시스템, 분리수거 시스템, 친환경 포장재 사용</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 프로그램 구성 모달 -->
+    <div id="program-modal" class="gallery-modal">
+        <div class="gallery-modal-content">
+            <span class="close-gallery-modal">&times;</span>
+            <div class="modal-image-container">
+                <img src="../svg/program_timeline.svg" alt="프로그램 구성 타임테이블" class="modal-image">
+            </div>
+            <div class="modal-info">
+                <h2 class="modal-title">프로그램 구성 타임테이블</h2>
+                <p class="modal-desc">노량진 청춘 나이트 마켓에서는 시간대별로 다양한 프로그램이 진행됩니다. 청년 창업 지원부터 스트레스 해소, 취업 지원, 문화 공연에 이르기까지 다채로운 프로그램이 청년과 수험생들의 다양한 니즈를 충족시킵니다.</p>
+                <div class="modal-elements">
+                    <h3>청년 창업 지원 프로그램</h3>
+                    <ul class="element-list">
+                        <li><strong>팝업 스토어 운영</strong> (18:00-19:00): 청년 창업자들의 제품과 서비스 판매 및 홍보</li>
+                        <li><strong>창업 멘토링 클리닉</strong> (19:00-20:30): 분야별 전문가의 1:1 맞춤형 비즈니스 상담</li>
+                        <li><strong>미니 MBA 강좌</strong> (20:30-22:00): 마케팅, 재무, 인사관리 등 창업에 필요한 핵심 지식 교육</li>
+                    </ul>
+                </div>
+                <div class="modal-elements">
+                    <h3>스트레스 해소 프로그램</h3>
+                    <ul class="element-list">
+                        <li><strong>야외 요가 & 스트레칭</strong> (18:00-19:00): 가볍게 따라할 수 있는 스트레칭 및 요가 클래스</li>
+                        <li><strong>예술 치유 프로그램</strong> (19:00-22:00): 컬러링 테라피, 캘리그래피, 클레이 아트 등 예술 활동을 통한 스트레스 해소</li>
+                        <li><strong>5분 명상 타임</strong> (매 시간 30분): 짧은 안내된 명상 세션으로 마음 챙김 실천</li>
+                    </ul>
+                </div>
+                <div class="modal-elements">
+                    <h3>취업 지원 프로그램</h3>
+                    <ul class="element-list">
+                        <li><strong>이력서 & 자기소개서 클리닉</strong> (18:00-20:00): 전문 컨설턴트의 맞춤형 첨삭 지도</li>
+                        <li><strong>모의 면접 프로그램</strong> (20:00-22:30): 직무별 면접 시뮬레이션 및 피드백 제공</li>
+                        <li><strong>직무별 현직자 멘토링</strong> (특별 세션): 다양한 직무의 현직자들과의 소규모 멘토링 세션</li>
+                    </ul>
+                </div>
+                <div class="modal-elements">
+                    <h3>문화 공연 프로그램</h3>
+                    <ul class="element-list">
+                        <li><strong>어쿠스틱 세션</strong> (18:00-19:00): 잔잔한 어쿠스틱 음악으로 편안한 분위기 조성</li>
+                        <li><strong>인디 뮤지션 쇼케이스</strong> (19:00-20:00): 유망한 인디 뮤지션들의 다양한 장르 공연</li>
+                        <li><strong>메인 공연</strong> (20:00-21:00): 인지도 있는 아티스트의 하이라이트 공연</li>
+                        <li><strong>참여형 프로그램</strong> (21:00-22:00): 오픈 마이크, 관객 참여 퀴즈쇼 등 소통형 문화 프로그램</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 기대 효과 모달 -->
+    <div id="benefits-modal" class="gallery-modal">
+        <div class="gallery-modal-content">
+            <span class="close-gallery-modal">&times;</span>
+            <div class="modal-image-container">
+                <img src="../svg/expected_benefits.svg" alt="기대 효과 인포그래픽" class="modal-image">
+            </div>
+            <div class="modal-info">
+                <h2 class="modal-title">기대 효과 인포그래픽</h2>
+                <p class="modal-desc">노량진 청춘 나이트 마켓은 단순한 문화 행사를 넘어 지역 활성화, 청년 역량 강화, 커뮤니티 형성, 정신건강 증진 등 다양한 사회적 가치를 창출하는 종합적인 프로젝트입니다.</p>
+                <div class="modal-elements">
+                    <h3>지역 이미지 개선 효과</h3>
+                    <ul class="element-list">
+                        <li><strong>지역 브랜드 가치 향상</strong>: '단순한 고시촌'에서 '청년 문화와 창업의 중심지'로 이미지 전환</li>
+                        <li><strong>지역 정체성 다양화</strong>: '수험'이라는 단일 키워드에서 '문화', '창업', '청년', '교류'라는 다양한 키워드로 확장</li>
+                        <li><strong>청년 친화적 지역으로 발돋움</strong>: 동작구가 서울 내 대표적인 청년 친화 지역으로 발전</li>
+                    </ul>
+                </div>
+                <div class="modal-elements">
+                    <h3>청년 정신 건강 증진 효과</h3>
+                    <ul class="element-list">
+                        <li><strong>스트레스 해소 기회 제공</strong>: 다양한 프로그램을 통한 수험생들의 정신건강 개선</li>
+                        <li><strong>사회적 고립감 해소</strong>: 커뮤니티 형성을 통한 소속감과 연결감 증진</li>
+                        <li><strong>균형 잡힌 생활 패턴 형성</strong>: 학습 효율성 25% 이상 향상 기대</li>
+                    </ul>
+                </div>
+                <div class="modal-elements">
+                    <h3>지역 경제 활성화 효과</h3>
+                    <ul class="element-list">
+                        <li><strong>야간 경제 활성화</strong>: 저녁 시간대 경제 활동 창출 (도시 경제의 약 10% 차지)</li>
+                        <li><strong>지역 상권 매출 증가</strong>: 주변 상권 매출 15-20% 증가 예상</li>
+                        <li><strong>지역 일자리 창출</strong>: 직접 일자리 약 50개, 간접 일자리 약 100개 창출 기대</li>
+                    </ul>
+                </div>
+                <div class="modal-elements">
+                    <h3>청년 창업 지원 효과</h3>
+                    <ul class="element-list">
+                        <li><strong>창업 진입 장벽 완화</strong>: 초기 진입 장벽 완화로 창업률 최대 30%까지 증가 가능</li>
+                        <li><strong>시장 검증 기회 제공</strong>: 실제 소비자 피드백을 통한 제품 및 서비스 개선</li>
+                        <li><strong>창업 성공률 향상</strong>: 체계적인 창업 교육으로 창업 성공률 2배 이상 향상 기대</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 방문객 예측 모달 -->
+    <div id="visitors-modal" class="gallery-modal">
+        <div class="gallery-modal-content">
+            <span class="close-gallery-modal">&times;</span>
+            <div class="modal-image-container">
+                <img src="../svg/visitor_prediction.svg" alt="방문객 예측 인포그래픽" class="modal-image">
+            </div>
+            <div class="modal-info">
+                <h2 class="modal-title">방문객 예측 인포그래픽</h2>
+                <p class="modal-desc">노량진 청춘 나이트 마켓은 시간이 지남에 따라 다양한 방문객층을 유치할 것으로 예상됩니다. 초기에는 수험생과 지역 청년들을 중심으로 운영되지만, 점차 서울 전역의 청년들과 관광객까지 유입될 것으로 예측됩니다.</p>
+                <div class="modal-elements">
+                    <h3>방문객 추이 분석</h3>
+                    <ul class="element-list">
+                        <li><strong>초기 3개월</strong>: 월평균 3,000명 수준의 방문객 예상 (주로 수험생과 인근 거주 청년)</li>
+                        <li><strong>6개월 경과</strong>: 월평균 5,000명으로 증가, 일반 청년 방문객 비율 증가</li>
+                        <li><strong>1년 경과</strong>: 월평균 8,000명으로 성장, 서울 전역에서 방문하는 청년 증가</li>
+                        <li><strong>2년 경과</strong>: 월평균 15,000명 수준, 관광객 비중 지속적 증가</li>
+                        <li><strong>3년 내</strong>: 월간 방문객 20,000명 돌파 예상, 서울의 새로운 청년 문화 관광지로 자리매김</li>
+                    </ul>
+                </div>
+                <div class="modal-elements">
+                    <h3>방문객 구성 분석</h3>
+                    <ul class="element-list">
+                        <li><strong>수험생 방문객</strong>: 초기 70%에서 3년 후 40% 수준으로 비율 감소 (절대 숫자는 증가)</li>
+                        <li><strong>일반 청년 방문객</strong>: 초기 25%에서 3년 후 40% 수준으로 비율 증가</li>
+                        <li><strong>관광객</strong>: 초기 5%에서 3년 후 20% 수준으로 비율 지속 증가</li>
+                    </ul>
+                </div>
+                <div class="modal-elements">
+                    <h3>방문객 특성</h3>
+                    <ul class="element-list">
+                        <li><strong>연령대</strong>: 20-30대가 전체 방문객의 80% 이상 차지할 것으로 예상</li>
+                        <li><strong>재방문율</strong>: 초기 30%에서 1년 후 50% 이상으로 증가 예상</li>
+                        <li><strong>체류 시간</strong>: 평균 2시간에서 점차 3시간 이상으로 증가할 것으로 예측</li>
+                        <li><strong>소비 금액</strong>: 1인당 평균 소비액 초기 1.5만원에서 점차 2.5만원으로 증가 예상</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 푸터 -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <span class="logo-text">NORANG<br>NIGHT</span>
+                </div>
+                <div class="footer-info">
+                    <p>2025년 '상상이 만드는 동작' 정책 아이디어 공모전</p>
+                    <p>"노량진 청춘 나이트 마켓" - 수험생과 청년들을 위한 야간 문화 축제</p>
+                </div>
+                <div class="footer-links">
+                    <a href="../index.html">홈</a>
+                    <a href="current-issues.html">현황 분석</a>
+                    <a href="improvements.html">개선 방안</a>
+                    <a href="benefits.html">기대 효과</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 노량진 청춘 나이트 마켓 프로젝트</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 자바스크립트 -->
+    <script>
+        // 모바일 메뉴 토글
+        document.querySelector('.menu-toggle').addEventListener('click', function() {
+            document.querySelector('.nav-links').classList.toggle('active');
+            this.classList.toggle('active');
+        });
+
+        // 모달 관련 자바스크립트
+        const modalButtons = document.querySelectorAll('.view-btn');
+        const modals = document.querySelectorAll('.gallery-modal');
+        const closeButtons = document.querySelectorAll('.close-gallery-modal');
+
+        // 모달 열기
+        modalButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const modalId = this.getAttribute('data-modal');
+                document.getElementById(modalId).style.display = 'block';
+                document.body.style.overflow = 'hidden'; // 스크롤 방지
+            });
+        });
+
+        // 모달 닫기
+        closeButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const modal = this.closest('.gallery-modal');
+                modal.style.display = 'none';
+                document.body.style.overflow = 'auto'; // 스크롤 복원
+            });
+        });
+
+        // 모달 외부 클릭 시 닫기
+        window.addEventListener('click', function(event) {
+            modals.forEach(modal => {
+                if (event.target === modal) {
+                    modal.style.display = 'none';
+                    document.body.style.overflow = 'auto'; // 스크롤 복원
+                }
+            });
+        });
+
+        // 이스케이프 키로 모달 닫기
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                modals.forEach(modal => {
+                    if (modal.style.display === 'block') {
+                        modal.style.display = 'none';
+                        document.body.style.overflow = 'auto'; // 스크롤 복원
+                    }
+                });
+            }
+        });
+
+        // 갤러리 필터링
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const infographicCards = document.querySelectorAll('.infographic-card');
+
+        filterButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                // 활성 클래스 전환
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                this.classList.add('active');
+                
+                const filter = this.getAttribute('data-filter');
+                
+                infographicCards.forEach(card => {
+                    if (filter === 'all' || card.getAttribute('data-category') === filter) {
+                        card.style.display = 'flex';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
