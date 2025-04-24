@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="36px" height="36px" viewBox="0 0 36 36" version="1.1" xmlns="http://www.w3.org/2000/svg">
+    <title>세미나 아이콘</title>
+    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <path d="M28,4 L8,4 C6.9,4 6,4.9 6,6 L6,24 L10,24 L10,32 L14,32 L14,28 L22,28 L22,32 L26,32 L26,24 L30,24 L30,6 C30,4.9 29.1,4 28,4 Z M12,26 L12,18 L10,18 L10,22 L8,22 L8,6 L28,6 L28,22 L26,22 L26,18 L24,18 L24,26 L12,26 Z M12,12 L12,10 L24,10 L24,12 L12,12 Z M16,16 L16,14 L24,14 L24,16 L16,16 Z" fill="#4BC0C0" fill-rule="nonzero"></path>
+    </g>
+</svg>

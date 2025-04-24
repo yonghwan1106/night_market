@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="48px" height="48px" viewBox="0 0 48 48" version="1.1" xmlns="http://www.w3.org/2000/svg">
+    <title>규모 아이콘</title>
+    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <path d="M42,6 L42,42 L6,42 L6,6 L42,6 Z M38,10 L10,10 L10,38 L38,38 L38,10 Z M17,17 L31,17 L31,31 L17,31 L17,17 Z M21,21 L21,27 L27,27 L27,21 L21,21 Z M14,14 L17,14 L17,17 L14,17 L14,14 Z M31,14 L34,14 L34,17 L31,17 L31,14 Z M14,31 L17,31 L17,34 L14,34 L14,31 Z M31,31 L34,31 L34,34 L31,34 L31,31 Z" fill="#7C4DFF" fill-rule="nonzero"></path>
+    </g>
+</svg>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="36px" height="36px" viewBox="0 0 36 36" version="1.1" xmlns="http://www.w3.org/2000/svg">
+    <title>예술 아이콘</title>
+    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <path d="M30,4 L6,4 C4.9,4 4,4.9 4,6 L4,30 C4,31.1 4.9,32 6,32 L30,32 C31.1,32 32,31.1 32,30 L32,6 C32,4.9 31.1,4 30,4 Z M30,30 L6,30 L6,6 L30,6 L30,30 Z M20,11 C20,9.34 21.34,8 23,8 C24.66,8 26,9.34 26,11 C26,12.66 24.66,14 23,14 C21.34,14 20,12.66 20,11 Z M10,24 L12,22 L16,26 L24,16 L28,20 L28,28 L8,28 L8,26 L10,24 Z" fill="#FF1F71" fill-rule="nonzero"></path>
+    </g>
+</svg>

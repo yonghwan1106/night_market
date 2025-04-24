@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="200" height="100" viewBox="0 0 200 100" xmlns="http://www.w3.org/2000/svg">
+  <!-- 배경 그라데이션 -->
+  <defs>
+    <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FF5252" />
+      <stop offset="100%" stop-color="#7C4DFF" />
+    </linearGradient>
+    
+    <!-- 글로우 필터 -->
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="3" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+  
+  <!-- 배경 형태 -->
+  <rect x="10" y="10" width="180" height="80" rx="15" fill="#131419" />
+  
+  <!-- 노량진 텍스트 -->
+  <text x="30" y="40" font-family="'Noto Sans KR', sans-serif" font-weight="900" font-size="20" fill="url(#logoGradient)" filter="url(#glow)">NORANG</text>
+  
+  <!-- 청춘 야시장 텍스트 -->
+  <text x="30" y="70" font-family="'Noto Sans KR', sans-serif" font-weight="900" font-size="24" fill="white">NIGHT</text>
+  
+  <!-- 네온 효과 장식선 -->
+  <path d="M10 60 H190" stroke="url(#logoGradient)" stroke-width="2" stroke-dasharray="2,2" />
+  
+  <!-- 아이콘 요소 -->
+  <g transform="translate(160, 50) scale(0.6)">
+    <circle cx="0" cy="0" r="20" fill="none" stroke="url(#logoGradient)" stroke-width="2" />
+    <path d="M-10,-10 L10,10 M-10,10 L10,-10" stroke="white" stroke-width="3" stroke-linecap="round" />
+  </g>
+</svg>

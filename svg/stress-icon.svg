@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="64px" height="64px" viewBox="0 0 64 64" version="1.1" xmlns="http://www.w3.org/2000/svg">
+    <title>스트레스 아이콘</title>
+    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <circle fill="#FF6384" cx="32" cy="32" r="30"></circle>
+        <path d="M32,16 C28.13,16 25,19.13 25,23 C25,26.87 28.13,30 32,30 C35.87,30 39,26.87 39,23 C39,19.13 35.87,16 32,16 Z" fill="#FFFFFF"></path>
+        <path d="M42,42 C42,36.48 37.52,32 32,32 C26.48,32 22,36.48 22,42 L42,42 Z" fill="#FFFFFF"></path>
+        <path d="M18,23 L12,23 M46,23 L52,23" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round"></path>
+        <path d="M22,15 L18,11 M42,15 L46,11" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round"></path>
+    </g>
+</svg>

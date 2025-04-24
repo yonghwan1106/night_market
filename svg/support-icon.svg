@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="64px" height="64px" viewBox="0 0 64 64" version="1.1" xmlns="http://www.w3.org/2000/svg">
+    <title>지원 서비스 아이콘</title>
+    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <circle fill="#4BC0C0" cx="32" cy="32" r="30"></circle>
+        <path d="M23,20 L41,20 C43.76,20 46,22.24 46,25 L46,35 C46,37.76 43.76,40 41,40 L35,40 L32,46 L29,40 L23,40 C20.24,40 18,37.76 18,35 L18,25 C18,22.24 20.24,20 23,20 Z" fill="#FFFFFF"></path>
+        <path d="M28,28 L36,28 M28,32 L36,32" stroke="#4BC0C0" stroke-width="2" stroke-linecap="round"></path>
+    </g>
+</svg>
