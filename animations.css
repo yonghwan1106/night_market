@@ -1,0 +1,509 @@
+/* ===== 애니메이션 CSS ===== */
+
+/* 스크롤 애니메이션 */
+.animate-fade-up {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.animate-fade-up.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.animate-fade-right {
+    opacity: 0;
+    transform: translateX(-30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.animate-fade-right.active {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.animate-fade-left {
+    opacity: 0;
+    transform: translateX(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.animate-fade-left.active {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.animate-scale {
+    opacity: 0;
+    transform: scale(0.9);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.animate-scale.active {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* 섹션 콘텐츠 페이드인 애니메이션 */
+.fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 1s ease, transform 1s ease;
+}
+
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* 숫자 카운터 애니메이션 */
+@keyframes countUp {
+    from {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.stat-number.animate {
+    display: inline-block;
+    animation: countUp 0.5s ease forwards;
+}
+
+/* 글리치 효과 애니메이션 */
+@keyframes glitch-anim-1 {
+    0% {
+        clip: rect(10px, 9999px, 90px, 0);
+    }
+    5% {
+        clip: rect(70px, 9999px, 30px, 0);
+    }
+    10% {
+        clip: rect(20px, 9999px, 60px, 0);
+    }
+    15% {
+        clip: rect(30px, 9999px, 20px, 0);
+    }
+    20% {
+        clip: rect(40px, 9999px, 50px, 0);
+    }
+    25% {
+        clip: rect(50px, 9999px, 80px, 0);
+    }
+    30% {
+        clip: rect(60px, 9999px, 40px, 0);
+    }
+    100% {
+        clip: rect(10px, 9999px, 90px, 0);
+    }
+}
+
+@keyframes glitch-anim-2 {
+    0% {
+        clip: rect(40px, 9999px, 100px, 0);
+    }
+    15% {
+        clip: rect(10px, 9999px, 30px, 0);
+    }
+    20% {
+        clip: rect(60px, 9999px, 50px, 0);
+    }
+    25% {
+        clip: rect(20px, 9999px, 90px, 0);
+    }
+    30% {
+        clip: rect(80px, 9999px, 70px, 0);
+    }
+    35% {
+        clip: rect(90px, 9999px, 40px, 0);
+    }
+    40% {
+        clip: rect(30px, 9999px, 80px, 0);
+    }
+    100% {
+        clip: rect(40px, 9999px, 100px, 0);
+    }
+}
+
+/* 네온 펄스 효과 */
+@keyframes neon-pulse {
+    0% {
+        text-shadow: 0 0 5px rgba(255, 31, 113, 0.7), 0 0 10px rgba(255, 31, 113, 0.5);
+    }
+    50% {
+        text-shadow: 0 0 15px rgba(255, 31, 113, 0.9), 0 0 25px rgba(255, 31, 113, 0.7), 0 0 35px rgba(255, 31, 113, 0.5);
+    }
+    100% {
+        text-shadow: 0 0 5px rgba(255, 31, 113, 0.7), 0 0 10px rgba(255, 31, 113, 0.5);
+    }
+}
+
+.neon-pulse {
+    animation: neon-pulse 2s infinite;
+}
+
+/* 타이핑 애니메이션 */
+@keyframes typing {
+    from {
+        width: 0;
+    }
+    to {
+        width: 100%;
+    }
+}
+
+@keyframes blink-caret {
+    from, to {
+        border-color: transparent;
+    }
+    50% {
+        border-color: var(--primary);
+    }
+}
+
+.typing-effect {
+    overflow: hidden;
+    white-space: nowrap;
+    border-right: 3px solid var(--primary);
+    animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
+}
+
+/* 플로팅 애니메이션 */
+@keyframes float {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+.float {
+    animation: float 3s ease-in-out infinite;
+}
+
+/* 셰이크 애니메이션 */
+@keyframes shake {
+    0%, 100% {
+        transform: translateX(0);
+    }
+    10%, 30%, 50%, 70%, 90% {
+        transform: translateX(-5px);
+    }
+    20%, 40%, 60%, 80% {
+        transform: translateX(5px);
+    }
+}
+
+.shake {
+    animation: shake 0.8s ease-in-out;
+}
+
+/* 줌 애니메이션 */
+@keyframes zoom {
+    0% {
+        transform: scale(0.9);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.zoom-in {
+    animation: zoom 0.6s ease forwards;
+}
+
+/* 슬라이드 애니메이션 */
+@keyframes slideRight {
+    0% {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideLeft {
+    0% {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideUp {
+    0% {
+        transform: translateY(100%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideDown {
+    0% {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.slide-right {
+    animation: slideRight 0.8s ease forwards;
+}
+
+.slide-left {
+    animation: slideLeft 0.8s ease forwards;
+}
+
+.slide-up {
+    animation: slideUp 0.8s ease forwards;
+}
+
+.slide-down {
+    animation: slideDown 0.8s ease forwards;
+}
+
+/* 회전 애니메이션 */
+@keyframes rotate {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.rotate {
+    animation: rotate 4s linear infinite;
+}
+
+/* 번쩍임 애니메이션 */
+@keyframes flash {
+    0%, 50%, 100% {
+        opacity: 1;
+    }
+    25%, 75% {
+        opacity: 0;
+    }
+}
+
+.flash {
+    animation: flash 2s ease infinite;
+}
+
+/* 그라데이션 애니메이션 */
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.gradient-animate {
+    background: linear-gradient(270deg, var(--primary), var(--secondary-dark), var(--accent));
+    background-size: 200% 200%;
+    animation: gradient 5s ease infinite;
+}
+
+/* 바운스 애니메이션 */
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-20px);
+    }
+    60% {
+        transform: translateY(-10px);
+    }
+}
+
+.bounce {
+    animation: bounce 2s ease infinite;
+}
+
+/* 애니메이션 지연 */
+.delay-100 {
+    transition-delay: 0.1s;
+}
+
+.delay-200 {
+    transition-delay: 0.2s;
+}
+
+.delay-300 {
+    transition-delay: 0.3s;
+}
+
+.delay-400 {
+    transition-delay: 0.4s;
+}
+
+.delay-500 {
+    transition-delay: 0.5s;
+}
+
+.delay-600 {
+    transition-delay: 0.6s;
+}
+
+.delay-700 {
+    transition-delay: 0.7s;
+}
+
+.delay-800 {
+    transition-delay: 0.8s;
+}
+
+.delay-900 {
+    transition-delay: 0.9s;
+}
+
+.delay-1000 {
+    transition-delay: 1s;
+}
+
+/* 스크롤 다운 애니메이션 */
+@keyframes arrow-down {
+    0%, 100% {
+        transform: rotate(45deg) translate(0, 0);
+        opacity: 0.4;
+    }
+    50% {
+        transform: rotate(45deg) translate(10px, 10px);
+        opacity: 0.8;
+    }
+}
+
+/* 모달 페이드인 애니메이션 */
+@keyframes modalFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 탭 전환 애니메이션 */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 백투탑 버튼 애니메이션 */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 파티클 애니메이션 */
+@keyframes particle-animation {
+    0% {
+        transform: translate(0, 0);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(var(--tx), var(--ty));
+        opacity: 0;
+    }
+}
+
+.particle {
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
+    background: var(--primary);
+    opacity: 0;
+    animation: particle-animation 1s ease-out forwards;
+}
+
+/* 3D 호버 효과 */
+.hover-3d {
+    transition: transform 0.3s ease;
+    transform-style: preserve-3d;
+}
+
+.hover-3d:hover {
+    transform: perspective(1000px) rotateX(5deg) rotateY(5deg) scale(1.05);
+}
+
+/* 물결 효과 */
+@keyframes wave {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    25% {
+        transform: translateY(-15px);
+    }
+    50% {
+        transform: translateY(0);
+    }
+    75% {
+        transform: translateY(15px);
+    }
+}
+
+.wave-effect > * {
+    animation: wave 2s ease infinite;
+}
+
+.wave-effect > *:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.wave-effect > *:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+.wave-effect > *:nth-child(4) {
+    animation-delay: 0.6s;
+}
+
+.wave-effect > *:nth-child(5) {
+    animation-delay: 0.8s;
+}
+
+/* 스무스 스크롤 애니메이션 */
+.smooth-scroll {
+    scroll-behavior: smooth;
+}
