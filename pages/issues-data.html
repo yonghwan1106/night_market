@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>지역 현황 데이터 | 노량진 청춘 야시장</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/animations.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- 네비게이션 -->
+    <nav class="main-nav">
+        <div class="nav-container">
+            <div class="logo">
+                <a href="../index.html"><span class="logo-text">NORANG<br>NIGHT</span></a>
+            </div>
+            <div class="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="../index.html#intro" class="nav-link">소개</a></li>
+                <li><a href="current-issues.html" class="nav-link">현황 분석</a></li>
+                <li><a href="issues-data.html" class="nav-link active">지역 현황 데이터</a></li>
+                <li><a href="improvements.html" class="nav-link">개선 방안</a></li>
+                <li><a href="benefits.html" class="nav-link">기대 효과</a></li>
+                <li><a href="gallery.html" class="nav-link">인포그래픽</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- 페이지 헤더 -->
+    <header class="page-header">
+        <div class="header-overlay"></div>
+        <div class="header-content">
+            <h1 class="page-title">노량진 <span class="highlight">지역 데이터</span></h1>
+            <p class="page-subtitle">수치로 보는 노량진의 현실</p>
+        </div>
+    </header>
+
+    <!-- 노량진 지역 현황 섹션 -->
+    <section class="section issues-data-section">
+        <div class="container">
+            <div class="section-intro animate-fade-up">
+                <p class="intro-paragraph">노량진 지역의 현황을 통계 데이터를 통해 객관적으로 살펴보겠습니다. 인구 구성, 상권 구조, 시간대별 활동 패턴, 그리고 청년 수험생들의 실제 니즈를 데이터로 분석했습니다.</p>
+            </div>
+            
+            <div class="data-grid">
+                <div class="data-card animate-fade-up">
+                    <h3>인구 구성</h3>
+                    <div class="data-visual">
+                        <canvas id="populationChart"></canvas>
+                    </div>
+                    <div class="data-summary">
+                        <p>노량진 지역 거주인구 중 20대가 차지하는 비율은 48%로, 서울시 평균(18%)의 2.6배에 달합니다. 특히 타지역 출신 수험생이 많아 지역 소속감이 낮은 편입니다.</p>
+                        <ul class="data-highlights">
+                            <li>20대 비율: <strong>48%</strong> (서울시 평균 18%)</li>
+                            <li>타지역 출신 비율: <strong>72%</strong></li>
+                            <li>평균 거주 기간: <strong>1.5년</strong></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="data-card animate-fade-up delay-100">
+                    <h3>상권 구조</h3>
+                    <div class="data-visual">
+                        <canvas id="businessChart"></canvas>
+                    </div>
+                    <div class="data-summary">
+                        <p>노량진 상권은 학원(35%), 식당(28%), 고시원(15%) 등 수험생 관련 업종에 집중되어 있으며, 문화·여가 시설은 5% 미만으로 매우 부족한 상황입니다.</p>
+                        <ul class="data-highlights">
+                            <li>학원/학습지원 업종: <strong>35%</strong></li>
+                            <li>문화·여가 시설: <strong>5%</strong> (서울시 평균 15%)</li>
+                            <li>외식업체 감소율: <strong>13.3%</strong> (2015-2023)</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="data-card animate-fade-up delay-200">
+                    <h3>시간대별 활동 패턴</h3>
+                    <div class="data-visual">
+                        <canvas id="timePatternChart"></canvas>
+                    </div>
+                    <div class="data-summary">
+                        <p>수험생들은 야간(18:00-24:00) 시간대에도 높은 활동성을 보이지만, 이 시간대에 이용 가능한 문화·여가 시설은 매우 제한적입니다.</p>
+                        <ul class="data-highlights">
+                            <li>야간 활동 지수(18:00-24:00): <strong>68/100</strong></li>
+                            <li>야간 개방 상업시설(22:00 이후): <strong>12%</strong></li>
+                            <li>야간 문화시설 이용 가능성: <strong>15%</strong></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="data-card animate-fade-up delay-300">
+                    <h3>청년 수험생 니즈</h3>
+                    <div class="data-visual need-bars">
+                        <div class="need-bar">
+                            <div class="need-label">스트레스 해소 공간</div>
+                            <div class="need-value-bg">
+                                <div class="need-value" style="width: 85%;">85%</div>
+                            </div>
+                        </div>
+                        <div class="need-bar">
+                            <div class="need-label">네트워킹 기회</div>
+                            <div class="need-value-bg">
+                                <div class="need-value" style="width: 78%;">78%</div>
+                            </div>
+                        </div>
+                        <div class="need-bar">
+                            <div class="need-label">문화·여가 활동</div>
+                            <div class="need-value-bg">
+                                <div class="need-value" style="width: 82%;">82%</div>
+                            </div>
+                        </div>
+                        <div class="need-bar">
+                            <div class="need-label">창업·취업 정보</div>
+                            <div class="need-value-bg">
+                                <div class="need-value" style="width: 76%;">76%</div>
+                            </div>
+                        </div>
+                        <div class="need-bar">
+                            <div class="need-label">야간 이용 가능 시설</div>
+                            <div class="need-value-bg">
+                                <div class="need-value" style="width: 90%;">90%</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="data-summary">
+                        <p>노량진 지역 수험생과 청년들을 대상으로 한 설문조사 결과, 90%가 야간에 이용 가능한 시설의 필요성을 느끼고 있으며, 85%는 스트레스 해소 공간이 부족하다고 응답했습니다.</p>
+                        <ul class="data-highlights">
+                            <li>정신건강 문제 경험 비율: <strong>68%</strong></li>
+                            <li>여가 활동 부족 호소: <strong>82%</strong></li>
+                            <li>사회적 연결망 부족 체감: <strong>78%</strong></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="detailed-stats animate-fade-up">
+                <h3 class="stats-title">심층 분석: 청년 정신건강 지표</h3>
+                <div class="stats-container">
+                    <div class="stats-item">
+                        <div class="stats-icon">
+                            <img src="../svg/stress-icon.svg" alt="스트레스 아이콘">
+                        </div>
+                        <div class="stats-number">37%</div>
+                        <div class="stats-label">청년 스트레스 인지율</div>
+                        <div class="stats-desc">20대의 스트레스 인지율은 37%로 전 연령대 중 가장 높은 수준 (질병관리본부, 2018)</div>
+                    </div>
+                    <div class="stats-item">
+                        <div class="stats-icon">
+                            <img src="../svg/mental-icon.svg" alt="정신건강 아이콘">
+                        </div>
+                        <div class="stats-number">5.8%</div>
+                        <div class="stats-label">청년 우울증 진료 증가율</div>
+                        <div class="stats-desc">2020년 기준 청년 우울증 진료건수는 2019년 대비 5.8% 증가 (하이닥, 2021)</div>
+                    </div>
+                    <div class="stats-item">
+                        <div class="stats-icon">
+                            <img src="../svg/social-icon.svg" alt="사회적 고립 아이콘">
+                        </div>
+                        <div class="stats-number">63%</div>
+                        <div class="stats-label">수험생 사회적 고립감</div>
+                        <div class="stats-desc">노량진 수험생의 63%가 사회적 고립감을 경험한다고 응답 (자체 설문조사, 2024)</div>
+                    </div>
+                    <div class="stats-item">
+                        <div class="stats-icon">
+                            <img src="../svg/support-icon.svg" alt="지원 서비스 아이콘">
+                        </div>
+                        <div class="stats-number">12%</div>
+                        <div class="stats-label">정신건강 서비스 이용률</div>
+                        <div class="stats-desc">정신건강 문제를 경험한 수험생 중 전문적 도움을 받은 비율은 12%에 불과 (자체 설문조사, 2024)</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="time-series-data animate-fade-up">
+                <h3 class="time-title">노량진 지역 경제 추이 (2015-2023)</h3>
+                <div class="time-visual">
+                    <canvas id="economicTrendChart"></canvas>
+                </div>
+                <div class="time-analysis">
+                    <p>노량진 고시촌 상권은 인터넷 강의의 확산과 코로나19의 영향으로 지속적인 하락세를 보이고 있습니다. 2015년 대비 2023년 기준, 고시원은 25%, 외식업체는 13.3%, 학원은 8.7% 감소했습니다.</p>
+                    <p>특히 저녁 시간대(18:00 이후) 운영 매장의 감소가 두드러져, 야간 경제 활동의 위축이 심각한 상황입니다. 이는 수험생들의 야간 문화·여가 니즈를 충족시키지 못하는 원인이 되고 있습니다.</p>
+                </div>
+            </div>
+            
+            <div class="comparison-data animate-fade-up">
+                <h3 class="comparison-title">노량진 vs 서울시 타 지역 비교</h3>
+                <div class="comparison-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>지표</th>
+                                <th>노량진</th>
+                                <th>홍대·합정</th>
+                                <th>강남역</th>
+                                <th>서울시 평균</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>20대 인구 비율</td>
+                                <td>48%</td>
+                                <td>37%</td>
+                                <td>28%</td>
+                                <td>18%</td>
+                            </tr>
+                            <tr>
+                                <td>문화·여가 시설 비율</td>
+                                <td>5%</td>
+                                <td>28%</td>
+                                <td>15%</td>
+                                <td>15%</td>
+                            </tr>
+                            <tr>
+                                <td>야간 경제 활성화 지수</td>
+                                <td>35/100</td>
+                                <td>85/100</td>
+                                <td>80/100</td>
+                                <td>55/100</td>
+                            </tr>
+                            <tr>
+                                <td>커뮤니티 프로그램 수</td>
+                                <td>7개</td>
+                                <td>42개</td>
+                                <td>35개</td>
+                                <td>21개</td>
+                            </tr>
+                            <tr>
+                                <td>창업 지원 인프라 지수</td>
+                                <td>25/100</td>
+                                <td>75/100</td>
+                                <td>85/100</td>
+                                <td>45/100</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="comparison-analysis">
+                    <p>노량진은 20대 청년 인구 비율이 서울시 내에서 가장 높은 지역 중 하나임에도 불구하고, 문화·여가 시설과 청년 지원 인프라는 현저히 부족한 상황입니다. 특히 야간 경제 활성화 지수와 창업 지원 인프라 지수는 서울시 평균에도 크게 미치지 못하고 있습니다.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 결론 및 시사점 -->
+    <section class="section conclusion-section">
+        <div class="container">
+            <h2 class="section-title animate-fade-up">데이터로 본 시사점</h2>
+            <div class="conclusion-content animate-fade-up">
+                <p>노량진 지역 데이터 분석 결과는 청년과 수험생 중심의 특화된 야간 문화 공간 조성의 필요성을 명확하게 보여줍니다. 주요 시사점은 다음과 같습니다:</p>
+                <ul class="conclusion-points">
+                    <li><strong>청년 밀집 지역임에도 청년 맞춤형 인프라 부족</strong> - 20대 인구 비율이 48%에 달하는 청년 밀집 지역임에도 불구하고, 청년 맞춤형 문화·여가·창업 인프라가 현저히 부족합니다.</li>
+                    <li><strong>야간 시간대 문화·여가 공간의 공백</strong> - 수험생들의 주요 활동 시간대인 야간(18:00-24:00)에 이용 가능한 문화·여가 시설이 매우 제한적입니다.</li>
+                    <li><strong>청년 정신건강 지원 인프라 필요</strong> - 높은 스트레스 인지율과 사회적 고립감에도 불구하고, 이를 해소할 수 있는 프로그램과 공간이 부족합니다.</li>
+                    <li><strong>지역 경제 다각화 필요</strong> - 학원, 고시원, 음식점 중심의 단조로운 상권 구조로 인해 지역 경제의 취약성이 높으며, 다양한 청년 소비 니즈를 충족시키지 못하고 있습니다.</li>
+                    <li><strong>청년 창업 및 네트워킹 기회 부재</strong> - 청년들의 창업 역량 개발과 네트워킹을 지원할 수 있는 플랫폼이 부족하여, 다양한 진로 모색의 기회가 제한되고 있습니다.</li>
+                </ul>
+                <p class="conclusion-final">종합적으로, 노량진 청춘 나이트 마켓은 이러한 데이터에서 드러난 지역적 문제점과 청년들의 니즈를 해결할 수 있는 종합적인 솔루션으로서 그 필요성이 입증됩니다.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 푸터 -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <span class="logo-text">NORANG<br>NIGHT</span>
+                </div>
+                <div class="footer-info">
+                    <p>2025년 '상상이 만드는 동작' 정책 아이디어 공모</p>
+                    <p>© 2025 노량진 청춘 나이트 마켓 프로젝트</p>
+                </div>
+                <div class="footer-contact">
+                    <p>Contact: <a href="mailto:info@norangnight.kr">info@norangnight.kr</a></p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><img src="../svg/instagram.svg" alt="인스타그램"></a>
+                        <a href="#" class="social-link"><img src="../svg/facebook.svg" alt="페이스북"></a>
+                        <a href="#" class="social-link"><img src="../svg/twitter.svg" alt="트위터"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="../js/charts.js"></script>
+    <script src="../js/menu.js"></script>
+    <script src="../js/animations.js"></script>
+    <script>
+        // 애니메이션 활성화
+        document.addEventListener('DOMContentLoaded', function() {
+            // 스크롤 애니메이션 적용
+            const animatedElements = document.querySelectorAll('.animate-fade-up');
+            
+            // 인터섹션 옵저버 생성
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            // 각 요소 관찰 시작
+            animatedElements.forEach(element => {
+                observer.observe(element);
+            });
+            
+            // 니즈 바 애니메이션
+            const needBars = document.querySelectorAll('.need-value');
+            needBars.forEach(bar => {
+                bar.style.width = '0';
+            });
+            
+            const needObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const bars = entry.target.querySelectorAll('.need-value');
+                        let delay = 0;
+                        bars.forEach(bar => {
+                            setTimeout(() => {
+                                bar.style.width = bar.getAttribute('style').match(/width: ([^;]+)/)[1];
+                            }, delay);
+                            delay += 200;
+                        });
+                        needObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.5 });
+            
+            const needBarsContainer = document.querySelector('.need-bars');
+            if (needBarsContainer) {
+                needObserver.observe(needBarsContainer);
+            }
+        });
+    </script>
+</body>
+</html>
