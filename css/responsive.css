@@ -1,0 +1,715 @@
+/* ===== 반응형 CSS ===== */
+
+/* 대형 데스크탑 (1200px 이상) */
+@media (min-width: 1200px) {
+    .container {
+        max-width: 1140px;
+    }
+    
+    .hero h1 {
+        font-size: 5.5rem;
+    }
+    
+    .section-title {
+        font-size: 3.2rem;
+    }
+}
+
+/* 데스크탑 (992px - 1199px) */
+@media (min-width: 992px) and (max-width: 1199px) {
+    .container {
+        max-width: 960px;
+    }
+    
+    .hero h1 {
+        font-size: 4.5rem;
+    }
+    
+    .section-title {
+        font-size: 3rem;
+    }
+    
+    .intro-stats {
+        gap: 20px;
+    }
+    
+    .stat-number {
+        font-size: 3rem;
+    }
+}
+
+/* 태블릿 (768px - 991px) */
+@media (min-width: 768px) and (max-width: 991px) {
+    .container {
+        max-width: 720px;
+    }
+    
+    .hero h1 {
+        font-size: 4rem;
+    }
+    
+    .hero .subtitle {
+        font-size: 1.3rem;
+    }
+    
+    .section-title {
+        font-size: 2.5rem;
+    }
+    
+    .intro-content {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+    
+    .intro-stats {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    
+    .solution-content {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    
+    .solution-image {
+        order: -1;
+    }
+    
+    .benefit-card {
+        padding: 25px;
+    }
+    
+    .benefit-title {
+        font-size: 1.3rem;
+    }
+    
+    .footer-content {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px;
+    }
+}
+
+/* 모바일 (576px - 767px) */
+@media (min-width: 576px) and (max-width: 767px) {
+    .container {
+        max-width: 540px;
+    }
+    
+    .main-nav {
+        padding: 15px 0;
+    }
+    
+    .menu-toggle {
+        display: flex;
+    }
+    
+    .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        flex-direction: column;
+        background-color: var(--dark);
+        padding: 20px 0;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        text-align: center;
+    }
+    
+    .nav-links.show {
+        display: flex;
+    }
+    
+    .nav-link {
+        padding: 10px 0;
+    }
+    
+    .hero {
+        height: auto;
+        min-height: 100vh;
+        padding: 120px 0 60px;
+    }
+    
+    .hero h1 {
+        font-size: 3rem;
+    }
+    
+    .hero .subtitle {
+        font-size: 1.2rem;
+        margin-bottom: 30px;
+    }
+    
+    .cta-buttons {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .cta-button {
+        width: 100%;
+        text-align: center;
+    }
+    
+    .section {
+        padding: 60px 0;
+    }
+    
+    .section-header {
+        margin-bottom: 40px;
+    }
+    
+    .section-title {
+        font-size: 2.2rem;
+    }
+    
+    .section-subtitle {
+        font-size: 1.1rem;
+    }
+    
+    .intro-content {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    
+    .intro-stats {
+        grid-template-columns: 1fr;
+    }
+    
+    .stats-item {
+        padding: 20px;
+    }
+    
+    .stat-number {
+        font-size: 3rem;
+    }
+    
+    .issues-grid,
+    .benefits-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .issue-card,
+    .benefit-card {
+        padding: 25px;
+    }
+    
+    .tabs {
+        overflow-x: auto;
+        padding-bottom: 10px;
+        margin-bottom: 30px;
+    }
+    
+    .tab-btn {
+        padding: 10px 15px;
+        font-size: 0.9rem;
+        margin: 0 3px;
+        white-space: nowrap;
+    }
+    
+    .solution-content {
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+    
+    .solution-image {
+        order: -1;
+    }
+    
+    .timeline::before {
+        left: 20px;
+    }
+    
+    .timeline-item {
+        width: 100%;
+        left: 0;
+        padding-left: 40px;
+        text-align: left;
+    }
+    
+    .timeline-item:nth-child(odd) {
+        padding-right: 0;
+        text-align: left;
+    }
+    
+    .timeline-marker {
+        left: 10px !important;
+        right: auto !important;
+    }
+    
+    .map-interactive {
+        height: 400px;
+    }
+    
+    .map-legend {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .cta-section {
+        padding: 60px 0;
+    }
+    
+    .cta-title {
+        font-size: 2rem;
+    }
+    
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: 30px;
+        text-align: center;
+    }
+    
+    .footer-links ul {
+        align-items: center;
+    }
+    
+    .footer-social {
+        justify-content: center;
+    }
+    
+    .modal-content {
+        width: 95%;
+        padding: 25px 20px;
+        margin: 30px auto;
+    }
+    
+    .modal h2 {
+        font-size: 2rem;
+    }
+    
+    .back-to-top {
+        width: 40px;
+        height: 40px;
+        bottom: 20px;
+        right: 20px;
+    }
+}
+
+/* 작은 모바일 (575px 이하) */
+@media (max-width: 575px) {
+    .container {
+        padding: 0 15px;
+    }
+    
+    .main-nav {
+        padding: 15px 0;
+    }
+    
+    .logo-text {
+        font-size: 1.5rem;
+    }
+    
+    .menu-toggle {
+        display: flex;
+    }
+    
+    .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        flex-direction: column;
+        background-color: var(--dark);
+        padding: 20px 0;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        text-align: center;
+        z-index: 1000;
+    }
+    
+    .nav-links.show {
+        display: flex;
+    }
+    
+    .nav-link {
+        padding: 10px 0;
+    }
+    
+    .hero {
+        height: auto;
+        min-height: 100vh;
+        padding: 100px 0 50px;
+    }
+    
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+    
+    .hero .subtitle {
+        font-size: 1rem;
+        margin-bottom: 25px;
+    }
+    
+    .cta-buttons {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .cta-button {
+        width: 100%;
+        text-align: center;
+        padding: 12px 20px;
+        font-size: 0.9rem;
+    }
+    
+    .scroll-indicator {
+        bottom: 30px;
+    }
+    
+    .section {
+        padding: 50px 0;
+    }
+    
+    .section-header {
+        margin-bottom: 30px;
+    }
+    
+    .section-title {
+        font-size: 1.8rem;
+    }
+    
+    .section-subtitle {
+        font-size: 1rem;
+    }
+    
+    .intro-content {
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+    
+    .intro-text {
+        font-size: 1rem;
+    }
+    
+    .intro-stats {
+        grid-template-columns: 1fr;
+    }
+    
+    .stat-item {
+        padding: 20px 15px;
+    }
+    
+    .stat-number {
+        font-size: 2.5rem;
+    }
+    
+    .stat-label {
+        font-size: 1rem;
+    }
+    
+    .issues-grid,
+    .benefits-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    
+    .issue-card,
+    .benefit-card {
+        padding: 20px;
+    }
+    
+    .issue-icon,
+    .benefit-icon {
+        margin-bottom: 15px;
+    }
+    
+    .issue-icon .icon,
+    .benefit-icon .icon {
+        width: 40px;
+        height: 40px;
+    }
+    
+    .issue-title,
+    .benefit-title {
+        font-size: 1.3rem;
+        margin-bottom: 10px;
+    }
+    
+    .issue-description,
+    .benefit-description {
+        font-size: 0.9rem;
+    }
+    
+    .tabs {
+        overflow-x: auto;
+        padding-bottom: 10px;
+        margin-bottom: 25px;
+    }
+    
+    .tab-btn {
+        padding: 8px 12px;
+        font-size: 0.8rem;
+        margin: 0 2px;
+        white-space: nowrap;
+    }
+    
+    .solution-content {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .solution-image {
+        order: -1;
+    }
+    
+    .solution-details h3 {
+        font-size: 1.5rem;
+        margin-bottom: 15px;
+    }
+    
+    .feature-list li {
+        margin-bottom: 15px;
+        font-size: 0.9rem;
+    }
+    
+    .timeline::before {
+        left: 20px;
+    }
+    
+    .timeline-item {
+        width: 100%;
+        left: 0;
+        padding-left: 40px;
+        text-align: left;
+        padding: 15px 0 15px 40px;
+    }
+    
+    .timeline-item:nth-child(odd) {
+        padding-right: 0;
+        text-align: left;
+    }
+    
+    .timeline-marker {
+        left: 10px !important;
+        right: auto !important;
+        width: 15px;
+        height: 15px;
+    }
+    
+    .timeline-content {
+        padding: 20px 15px;
+    }
+    
+    .timeline-date {
+        font-size: 1rem;
+        margin-bottom: 5px;
+    }
+    
+    .timeline-title {
+        font-size: 1.2rem;
+        margin-bottom: 10px;
+    }
+    
+    .timeline-description {
+        font-size: 0.9rem;
+    }
+    
+    .map-interactive {
+        height: 300px;
+    }
+    
+    .map-legend {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+    
+    .legend-item {
+        font-size: 0.8rem;
+    }
+    
+    .cta-section {
+        padding: 50px 0;
+    }
+    
+    .cta-title {
+        font-size: 1.5rem;
+    }
+    
+    .cta-description {
+        font-size: 0.9rem;
+        margin-bottom: 25px;
+    }
+    
+    .main-footer {
+        padding: 50px 0 20px;
+    }
+    
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: 25px;
+        text-align: center;
+    }
+    
+    .footer-logo {
+        margin-bottom: 15px;
+    }
+    
+    .footer-info {
+        font-size: 0.8rem;
+    }
+    
+    .footer-links ul {
+        align-items: center;
+        gap: 8px;
+    }
+    
+    .footer-links a {
+        font-size: 0.9rem;
+    }
+    
+    .footer-social {
+        justify-content: center;
+    }
+    
+    .social-link {
+        width: 35px;
+        height: 35px;
+    }
+    
+    .modal-content {
+        width: 95%;
+        padding: 20px 15px;
+        margin: 20px auto;
+    }
+    
+    .modal h2 {
+        font-size: 1.8rem;
+        margin-bottom: 20px;
+    }
+    
+    .proposal-content h3 {
+        font-size: 1.3rem;
+        margin: 20px 0 10px;
+    }
+    
+    .proposal-content p,
+    .proposal-content li {
+        font-size: 0.9rem;
+    }
+    
+    .download-section {
+        margin-top: 25px;
+    }
+    
+    .download-btn {
+        padding: 12px 20px;
+        font-size: 0.9rem;
+    }
+    
+    .back-to-top {
+        width: 35px;
+        height: 35px;
+        bottom: 15px;
+        right: 15px;
+    }
+    
+    .back-to-top .icon {
+        width: 20px;
+        height: 20px;
+    }
+}
+
+/* 초소형 모바일 디바이스 (320px 이하) */
+@media (max-width: 320px) {
+    .hero h1 {
+        font-size: 2.2rem;
+    }
+    
+    .hero .subtitle {
+        font-size: 0.9rem;
+    }
+    
+    .section-title {
+        font-size: 1.5rem;
+    }
+    
+    .intro-text {
+        font-size: 0.9rem;
+    }
+    
+    .stat-number {
+        font-size: 2.2rem;
+    }
+    
+    .issue-title,
+    .benefit-title {
+        font-size: 1.2rem;
+    }
+    
+    .solution-details h3 {
+        font-size: 1.3rem;
+    }
+    
+    .cta-title {
+        font-size: 1.3rem;
+    }
+}
+
+/* 인쇄 미디어 쿼리 */
+@media print {
+    body {
+        background: white;
+        color: black;
+        font-size: 12pt;
+    }
+    
+    .main-nav, .footer-social, .cta-section, .back-to-top {
+        display: none;
+    }
+    
+    .section {
+        padding: 20px 0;
+        page-break-inside: avoid;
+    }
+    
+    a {
+        text-decoration: underline;
+        color: #000;
+    }
+    
+    .hero {
+        height: auto;
+        background: none;
+    }
+    
+    .hero-overlay {
+        display: none;
+    }
+    
+    .hero h1, .hero .subtitle {
+        color: #000;
+    }
+    
+    .cta-button {
+        border: 1px solid #000;
+        color: #000;
+    }
+    
+    .glitch-text::before,
+    .glitch-text::after {
+        display: none;
+    }
+    
+    .stat-number {
+        color: #000;
+    }
+    
+    .issue-card::before,
+    .benefit-card::before,
+    .timeline::before {
+        background: #000;
+    }
+    
+    .timeline-marker {
+        box-shadow: 0 0 0 4px #fff, 0 0 0 6px #000;
+    }
+    
+    .map-interactive,
+    .solution-img-placeholder {
+        border: 1px solid #ddd;
+    }
+    
+    .footer-content {
+        display: block;
+    }
+}
