@@ -1,1 +1,11 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 6h16v12H4V6m16 13H4a1 1 0 01-1-1V6a1 1 0 011-1h16a1 1 0 011 1v12a1 1 0 01-1 1M9 8h2v2H9V8m4 0h2v2h-2V8M9 12h2v2H9v-2m4 0h2v2h-2v-2m-4 4h8v1H9v-1z" fill="#FF6B6B"/></svg> 
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect x="10" y="12" width="44" height="30" rx="2" fill="#202026" stroke="#7C4DFF" stroke-width="2"/>
+  <rect x="14" y="16" width="36" height="20" rx="1" fill="#131419"/>
+  <rect x="22" y="42" width="20" height="4" fill="#7C4DFF"/>
+  <rect x="28" y="46" width="8" height="6" fill="#7C4DFF"/>
+  <circle cx="32" cy="26" r="8" fill="#FF1F71" opacity="0.7"/>
+  <path d="M36 26C36 28.2091 34.2091 30 32 30C29.7909 30 28 28.2091 28 26C28 23.7909 29.7909 22 32 22" stroke="#00FFF0" stroke-width="2" stroke-linecap="round"/>
+  <circle cx="32" cy="26" r="3" fill="#00FFF0" fill-opacity="0.5"/>
+  <circle cx="32" cy="26" r="12" stroke="#00FFF0" stroke-width="1" stroke-dasharray="2 2"/>
+</svg>

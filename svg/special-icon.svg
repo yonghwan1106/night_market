@@ -1,1 +1,12 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12,17.27L18.18,21L16.54,14.97L22,10.24L15.95,9.64L12,4L8.05,9.64L2,10.24L7.46,14.97L5.82,21L12,17.27Z" fill="#FF1F71"/></svg> 
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M32 8L36.8386 20.7588L50 24L36.8386 27.2412L32 40L27.1614 27.2412L14 24L27.1614 20.7588L32 8Z" fill="#FF1F71"/>
+  <circle cx="16" cy="48" r="8" fill="#FF6B6B" fill-opacity="0.8"/>
+  <circle cx="48" cy="48" r="8" fill="#7C4DFF" fill-opacity="0.8"/>
+  <circle cx="32" cy="24" r="4" fill="#131419" stroke="#FF1F71" stroke-width="2"/>
+  <path d="M32 40V56" stroke="#FF1F71" stroke-width="2" stroke-linecap="round" stroke-dasharray="2 2"/>
+  <path d="M20 48H12" stroke="white" stroke-width="2" stroke-linecap="round"/>
+  <path d="M20 44L15 52" stroke="white" stroke-width="2" stroke-linecap="round"/>
+  <path d="M44 48H52" stroke="white" stroke-width="2" stroke-linecap="round"/>
+  <path d="M44 44L49 52" stroke="white" stroke-width="2" stroke-linecap="round"/>
+</svg>
