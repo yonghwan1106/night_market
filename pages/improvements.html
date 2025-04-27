@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/animations.css">
     <link rel="stylesheet" href="../css/responsive.css">
+    <link rel="stylesheet" href="../css/improvements.css">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -14,7 +15,7 @@
     <nav class="main-nav">
         <div class="nav-container">
             <div class="logo">
-                <a href="../index.html"><span class="logo-text">NORANG<br>NIGHT</span></a>
+                <a href="../index.html"><span class="logo-text">NORANG<br>NIGHT MARKET</span></a>
             </div>
             <div class="menu-toggle">
                 <span></span>
@@ -22,12 +23,12 @@
                 <span></span>
             </div>
             <ul class="nav-links">
-                <li><a href="../index.html#intro" class="nav-link">소개</a></li>
+                <li><a href="#intro" class="nav-link">소개</a></li>
                 <li><a href="current-issues.html" class="nav-link">현황 분석</a></li>
                 <li><a href="issues-data.html" class="nav-link">지역 현황 데이터</a></li>
-                <li><a href="improvements.html" class="nav-link active">개선 방안</a></li>
+                <li><a href="improvements.html" class="nav-link">개선 방안</a></li>
+                <li><a href="improvements-programs.html" class="nav-link">프로그램 구성</a></li>
                 <li><a href="benefits.html" class="nav-link">기대 효과</a></li>
-                <li><a href="gallery.html" class="nav-link">인포그래픽</a></li>
             </ul>
         </div>
     </nav>
@@ -48,11 +49,7 @@
             
             <div class="plan-grid">
                 <div class="plan-card location-card animate-fade-up">
-                    <div class="plan-icon">
-                        <svg class="icon" viewBox="0 0 24 24">
-                            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
-                        </svg>
-                    </div>
+                    <div class="plan-icon"><img src="../svg/location-icon.svg" alt="위치 아이콘"></div>
                     <h3>운영 시간 및 장소</h3>
                     <div class="plan-details">
                         <p><strong>운영 장소:</strong> 노량진역 1번 출구 인근 공공 공간 및 노량진 메가스터디타워 인접 광장</p>
@@ -68,11 +65,7 @@
                 </div>
                 
                 <div class="plan-card scale-card animate-fade-up delay-100">
-                    <div class="plan-icon">
-                        <svg class="icon" viewBox="0 0 24 24">
-                            <path d="M19 3h-4.18C14.4 1.84 13.3 1 12 1c-1.3 0-2.4.84-2.82 2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 0c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm2 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/>
-                        </svg>
-                    </div>
+                    <div class="plan-icon"><img src="../svg/scale-icon.svg" alt="규모 아이콘"></div>
                     <h3>운영 주기 및 규모</h3>
                     <div class="plan-details">
                         <p><strong>초기 규모:</strong> 소규모(30-40개 부스)로 시작하여 점진적 확대</p>
@@ -118,7 +111,7 @@
                     <div class="support-item">
                         <h4>인력 구성</h4>
                         <ul>
-                            <li>동작구 문화체육과 주관 하에 전담 운영팀(5명) 구성</li>
+                            <li>동작구 문화정책과 주관 하에 전담 운영팀(5명) 구성</li>
                             <li>노량진 청년일자리센터와 연계하여 청년 서포터즈(20명) 모집·운영</li>
                             <li>지역 봉사단체 및 중앙대학교 학생 자원봉사자 활용</li>
                         </ul>
@@ -137,385 +130,125 @@
         </div>
     </section>
 
-    <!-- 간략한 공간 구성 섹션 (이미지 없이) -->
+    <!-- 공간 구성 섹션 -->
     <section class="section space-section">
         <div class="container">
             <h2 class="section-title animate-fade-up">공간 구성 계획</h2>
             
-            <div class="space-details animate-fade-up">
-                <div class="description">
-                    <p>노량진 청춘 야시장은 다음 네 가지 주요 공간으로 구성됩니다:</p>
-                    <ul class="space-areas">
-                        <li class="area-startup"><strong>청년 창업자 팝업 스토어 존</strong> - 전체 공간의 40%</li>
-                        <li class="area-job"><strong>취업 정보 공유 존</strong> - 전체 공간의 15%</li>
-                        <li class="area-culture"><strong>문화 공연 존</strong> - 전체 공간의 20%</li>
-                        <li class="area-food"><strong>푸드 존 및 네트워킹 공간</strong> - 전체 공간의 25%</li>
-                    </ul>
-                </div>
-            </div>
-            
-            <div class="zone-info">
-                <div class="zone-tab">
-                    <div class="tab-buttons">
-                        <button class="tab-btn active" data-zone="startup">청년 창업자 팝업 스토어 존</button>
-                        <button class="tab-btn" data-zone="job">취업 정보 공유 존</button>
-                        <button class="tab-btn" data-zone="culture">문화 공연 존</button>
-                        <button class="tab-btn" data-zone="food">푸드 존 및 네트워킹 공간</button>
+            <div class="space-visual animate-fade-up">
+                <div class="space-map">
+                    <img src="../images/space-map.svg" width="80%" alt="공간 구성 맵" class="map-image">
+                    <div class="map-overlay">
+                        <div class="zone zone-startup" data-zone="startup">
+                            <span class="zone-label">청년 창업자<br>팝업 스토어 존</span>
+                        </div>
+                        <div class="zone zone-job" data-zone="job">
+                            <span class="zone-label">취업 정보<br>공유 존</span>
+                        </div>
+                        <div class="zone zone-culture" data-zone="culture">
+                            <span class="zone-label">문화 공연 존</span>
+                        </div>
+                        <div class="zone zone-food" data-zone="food">
+                            <span class="zone-label">푸드 존 및<br>네트워킹 공간</span>
+                        </div>
                     </div>
-                    
-                    <div class="tab-content">
-                        <div class="tab-pane active" id="startup-pane">
-                            <h3>청년 창업자 팝업 스토어 존</h3>
-                            <p>전체 공간의 40%(약 20-30개 부스)를 청년 창업자 팝업 스토어로 구성합니다.</p>
-                            <div class="zone-features">
-                                <div class="feature-column">
-                                    <h4>부스 유형 다양화</h4>
-                                    <ul>
-                                        <li>일반 판매형: 제품 전시 및 판매 (15개)</li>
-                                        <li>체험형: 고객 참여 및 체험 활동 (5개)</li>
-                                        <li>서비스형: 상담, 컨설팅 등 서비스 (5개)</li>
-                                        <li>공유형: 2-3명의 창업자 협업 공간 (5개)</li>
-                                    </ul>
-                                </div>
-                                <div class="feature-column">
-                                    <h4>테마별 섹션 구성</h4>
-                                    <ul>
-                                        <li>리빙 & 라이프스타일: 수험생활 용품, 문구류</li>
-                                        <li>패션 & 액세서리: 청년 디자이너 제품</li>
-                                        <li>푸드 & 베버리지: 건강 간식, 수제 음료</li>
-                                        <li>디지털 & 캐릭터: IT 관련 제품, 캐릭터 굿즈</li>
-                                        <li>아트 & 크래프트: 수공예품, 예술 작품</li>
-                                    </ul>
-                                </div>
+                </div>
+                <div class="zone-details">
+                    <div class="zone-detail" id="startup-detail">
+                        <h3>청년 창업자 팝업 스토어 존</h3>
+                        <p>전체 공간의 40%(약 20-30개 부스)를 청년 창업자 팝업 스토어로 구성합니다.</p>
+                        <div class="zone-features">
+                            <div class="feature">
+                                <h4>부스 유형 다양화</h4>
+                                <ul>
+                                    <li>일반 판매형: 제품 전시 및 판매 (15개)</li>
+                                    <li>체험형: 고객 참여 및 체험 활동 (5개)</li>
+                                    <li>서비스형: 상담, 컨설팅 등 서비스 (5개)</li>
+                                    <li>공유형: 2-3명의 창업자 협업 공간 (5개)</li>
+                                </ul>
                             </div>
-                        </div>
-                        
-                        <div class="tab-pane" id="job-pane">
-                            <h3>취업 정보 공유 존</h3>
-                            <p>전체 공간의 15%(약 120㎡)를 취업 정보 공유 공간으로 할당합니다.</p>
-                            <div class="zone-features">
-                                <div class="feature-column">
-                                    <h4>주요 시설 및 기능</h4>
-                                    <ul>
-                                        <li>취업 정보 디지털 월: 실시간 채용 정보</li>
-                                        <li>모의 면접 부스: AI 면접 시스템 활용</li>
-                                        <li>이력서 클리닉 존: 전문가 첨삭 서비스</li>
-                                        <li>커리어 라이브러리: 직무별 정보와 서적</li>
-                                    </ul>
-                                </div>
-                                <div class="feature-column">
-                                    <h4>특화 프로그램</h4>
-                                    <ul>
-                                        <li>5분 스피드 컨설팅: 현직자 집중 상담</li>
-                                        <li>직무별 미니 설명회: 30분 직무 정보</li>
-                                        <li>공시생 합격자 멘토링: 수험 노하우 공유</li>
-                                        <li>이력서 사진 무료 촬영: 전문 포토그래퍼</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="tab-pane" id="culture-pane">
-                            <h3>문화 공연 존</h3>
-                            <p>전체 공간의 20%(약 160㎡)를 문화 공연 공간으로 조성합니다.</p>
-                            <div class="zone-features">
-                                <div class="feature-column">
-                                    <h4>무대 설계</h4>
-                                    <ul>
-                                        <li>모듈형 이동식 무대 시스템 (6m×4m)</li>
-                                        <li>기본 음향 시스템 및 조명 시스템</li>
-                                        <li>이동식 천막 구조 (우천 대비)</li>
-                                        <li>LED 스크린 배경 (4m×3m)</li>
-                                    </ul>
-                                </div>
-                                <div class="feature-column">
-                                    <h4>공연 유형 및 일정</h4>
-                                    <ul>
-                                        <li>어쿠스틱 공연 (18:30-19:30)</li>
-                                        <li>청년 아티스트 쇼케이스 (19:30-20:30)</li>
-                                        <li>메인 공연 (20:30-21:30)</li>
-                                        <li>참여형 프로그램 (21:30-22:30)</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="tab-pane" id="food-pane">
-                            <h3>푸드 존 및 네트워킹 공간</h3>
-                            <p>전체 공간의 25%(약 200㎡)를 푸드 존과 네트워킹 공간으로 구성합니다.</p>
-                            <div class="zone-features">
-                                <div class="feature-column">
-                                    <h4>푸드 트럭 및 부스 운영</h4>
-                                    <ul>
-                                        <li>지역 특색 푸드 트럭 (3대)</li>
-                                        <li>청년 창업 푸드 트럭 (2대)</li>
-                                        <li>핑거푸드 부스 (5개)</li>
-                                        <li>음료 바 (2개): 수제 차, 논알콜 음료</li>
-                                    </ul>
-                                </div>
-                                <div class="feature-column">
-                                    <h4>네트워킹 공간 특징</h4>
-                                    <ul>
-                                        <li>테마별 테이블: 관심사별 마킹</li>
-                                        <li>개방형 커뮤니티 보드: "오늘의 주제"</li>
-                                        <li>스피드 네트워킹 존: 5분 단위 교류</li>
-                                        <li>아이디어 공유 테이블: 창업 아이디어 공유</li>
-                                    </ul>
-                                </div>
+                            <div class="feature">
+                                <h4>테마별 섹션 구성</h4>
+                                <ul>
+                                    <li>리빙 & 라이프스타일: 수험생활 용품, 문구류</li>
+                                    <li>패션 & 액세서리: 청년 디자이너 제품</li>
+                                    <li>푸드 & 베버리지: 건강 간식, 수제 음료</li>
+                                    <li>디지털 & 캐릭터: IT 관련 제품, 캐릭터 굿즈</li>
+                                    <li>아트 & 크래프트: 수공예품, 예술 작품</li>
+                                </ul>
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 프로그램 섹션 -->
-    <section class="section programs-section">
-        <div class="container">
-            <h2 class="section-title animate-fade-up">프로그램 구성</h2>
-            
-            <div class="programs-tabs animate-fade-up">
-                <div class="tab-nav">
-                    <button class="tab-btn active" data-program="startup">청년 창업 지원</button>
-                    <button class="tab-btn" data-program="stress">스트레스 해소</button>
-                    <button class="tab-btn" data-program="job">취업 지원</button>
-                    <button class="tab-btn" data-program="culture">문화 공연</button>
-                </div>
-                
-                <div class="tab-content">
-                    <div class="tab-pane active" id="startup-tab">
-                        <div class="program-category">
-                            <h3 class="category-title">
-                                <svg class="icon" viewBox="0 0 24 24">
-                                    <path d="M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-2 10h-4v4h-2v-4H7v-2h4V7h2v4h4v2z"/>
-                                </svg>
-                                팝업 스토어 운영 지원
-                            </h3>
-                            <ul class="program-list">
-                                <li><strong>창업 준비생 인큐베이팅:</strong> 6개월 과정의 팝업 스토어 운영 교육 및 실전 기회 제공(월 1회)</li>
-                                <li><strong>시제품 테스트베드:</strong> 개발 중인 제품/서비스의 시장 반응을 테스트할 수 있는 기회 제공(10개 팀 선발)</li>
-                                <li><strong>상품 패키징 & 디스플레이 컨설팅:</strong> 전문가의 제품 진열 및 패키징 자문 서비스(상시)</li>
-                                <li><strong>팝업 스토어 운영 원데이 클래스:</strong> 월 1회 창업 준비생 대상 팝업 스토어 운영 노하우 강의</li>
-                            </ul>
-                        </div>
-                        <div class="program-category">
-                            <h3 class="category-title">
-                                <svg class="icon" viewBox="0 0 24 24">
-                                    <path d="M21 18v1c0 1.1-.9 2-2 2H5c-1.1 0-2-.9-2-2V5c0-1.1.9-2 2-2h14c1.1 0 2 .9 2 2v1h-9c-1.1 0-2 .9-2 2v8c0 1.1.9 2 2 2h9zm-9-2h10V8H12v8zm4-2.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/>
-                                </svg>
-                                비즈니스 역량 강화 프로그램
-                            </h3>
-                            <ul class="program-list">
-                                <li><strong>창업 멘토링 클리닉:</strong> 분야별 전문가의 1:1 맞춤형 비즈니스 상담(회당 30분, 사전 예약제)</li>
-                                <li><strong>미니 MBA 강좌:</strong> 마케팅, 재무, 인사관리 등 창업에 필요한 핵심 지식 교육(월 1회, 2시간)</li>
-                                <li><strong>소셜미디어 마케팅 워크숍:</strong> 인스타그램, 틱톡 등을 활용한 효과적인 마케팅 방법 교육(월 1회)</li>
-                                <li><strong>스타트업 피칭 콘테스트:</strong> 사업 아이디어를 5분 내 효과적으로 전달하는 경연(분기 1회)</li>
-                            </ul>
+                    <div class="zone-detail" id="job-detail">
+                        <h3>취업 정보 공유 존</h3>
+                        <p>전체 공간의 15%(약 120㎡)를 취업 정보 공유 공간으로 할당합니다.</p>
+                        <div class="zone-features">
+                            <div class="feature">
+                                <h4>주요 시설 및 기능</h4>
+                                <ul>
+                                    <li>취업 정보 디지털 월: 실시간 채용 정보</li>
+                                    <li>모의 면접 부스: AI 면접 시스템 활용</li>
+                                    <li>이력서 클리닉 존: 전문가 첨삭 서비스</li>
+                                    <li>커리어 라이브러리: 직무별 정보와 서적</li>
+                                </ul>
+                            </div>
+                            <div class="feature">
+                                <h4>특화 프로그램</h4>
+                                <ul>
+                                    <li>5분 스피드 컨설팅: 현직자 집중 상담</li>
+                                    <li>직무별 미니 설명회: 30분 직무 정보</li>
+                                    <li>공시생 합격자 멘토링: 수험 노하우 공유</li>
+                                    <li>이력서 사진 무료 촬영: 전문 포토그래퍼</li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
-                    
-                    <div class="tab-pane" id="stress-tab">
-                        <div class="program-category">
-                            <h3 class="category-title">
-                                <svg class="icon" viewBox="0 0 24 24">
-                                    <path d="M13.5 5.5c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zM9.8 8.9L7 23h2.1l1.8-8 2.1 2v6h2v-7.5l-2.1-2 .6-3C14.8 12 16.8 13 19 13v-2c-1.9 0-3.5-1-4.3-2.4l-1-1.6c-.4-.6-1-1-1.7-1-.3 0-.5.1-.8.1L6 8.3V13h2V9.6l1.8-.7"/>
-                                </svg>
-                                신체 활동 기반 프로그램
-                            </h3>
-                            <ul class="program-list">
-                                <li><strong>플래시 모브 댄스:</strong> 간단한 안무를 배우고 단체로 참여하는 즉흥 댄스 타임(매 시간 정각, 10분)</li>
-                                <li><strong>야외 요가 & 스트레칭:</strong> 가볍게 따라할 수 있는 스트레칭 및 요가 클래스(19:00-19:30)</li>
-                                <li><strong>스트레스 펀치백:</strong> 시험 스트레스를 물리적으로 해소할 수 있는 펀치백 체험존</li>
-                                <li><strong>스포츠 게임 존:</strong> 탁구, 다트, 링토스 등 가벼운 스포츠 게임으로 스트레스 해소</li>
-                            </ul>
-                        </div>
-                        <div class="program-category">
-                            <h3 class="category-title">
-                                <svg class="icon" viewBox="0 0 24 24">
-                                    <path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9-4.03-9-9-9zm0 16c-3.86 0-7-3.14-7-7s3.14-7 7-7 7 3.14 7 7-3.14 7-7 7zm-1.46-5.47L8.41 11.4l-1.06 1.06 3.18 3.18 6-6-1.06-1.06-4.93 4.95z"/>
-                                </svg>
-                                예술 치유 프로그램
-                            </h3>
-                            <ul class="program-list">
-                                <li><strong>컬러링 테라피:</strong> 성인용 컬러링북과 미술 도구를 제공하는 드롭인 아트존</li>
-                                <li><strong>감정 표현 캘리그래피:</strong> 자신의 감정을 글씨로 표현하는 캘리그래피 워크숍(월 2회)</li>
-                                <li><strong>클레이 아트 테라피:</strong> 점토를 이용한 감정 표현 및 스트레스 해소 프로그램(월 2회)</li>
-                                <li><strong>음악 테라피 세션:</strong> 간단한 타악기를 활용한 집단 음악 치유 프로그램(월 1회)</li>
-                            </ul>
+                    <div class="zone-detail" id="culture-detail">
+                        <h3>문화 공연 존</h3>
+                        <p>전체 공간의 20%(약 160㎡)를 문화 공연 공간으로 조성합니다.</p>
+                        <div class="zone-features">
+                            <div class="feature">
+                                <h4>무대 설계</h4>
+                                <ul>
+                                    <li>모듈형 이동식 무대 시스템 (6m×4m)</li>
+                                    <li>기본 음향 시스템 및 조명 시스템</li>
+                                    <li>이동식 천막 구조 (우천 대비)</li>
+                                    <li>LED 스크린 배경 (4m×3m)</li>
+                                </ul>
+                            </div>
+                            <div class="feature">
+                                <h4>공연 유형 및 일정</h4>
+                                <ul>
+                                    <li>어쿠스틱 공연 (18:30-19:30)</li>
+                                    <li>청년 아티스트 쇼케이스 (19:30-20:30)</li>
+                                    <li>메인 공연 (20:30-21:30)</li>
+                                    <li>참여형 프로그램 (21:30-22:30)</li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
-                    
-                    <div class="tab-pane" id="job-tab">
-                        <div class="program-category">
-                            <h3 class="category-title">
-                                <svg class="icon" viewBox="0 0 24 24">
-                                    <path d="M19 3h-4.18C14.4 1.84 13.3 1 12 1c-1.3 0-2.4.84-2.82 2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 0c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm-2 14H7v-2h3v2zm0-4H7v-2h3v2zm0-4H7V7h3v2zm5 8h-4v-2h4v2zm0-4h-4v-2h4v2zm0-4h-4V7h4v2z"/>
-                                </svg>
-                                실전 취업 준비 프로그램
-                            </h3>
-                            <ul class="program-list">
-                                <li><strong>1:1 이력서 & 자기소개서 클리닉:</strong> 전문 컨설턴트의 맞춤형 첨삭 지도(사전 예약제)</li>
-                                <li><strong>모의 면접 프로그램:</strong> 직무별 면접 시뮬레이션 및 피드백 제공(30분 세션)</li>
-                                <li><strong>직무 적성검사 & 해석:</strong> 개인별 적성 및 강점을 파악하는 심리검사 및 해석 서비스</li>
-                                <li><strong>AI 면접 대비 훈련:</strong> 최신 AI 면접 시스템을 활용한 실전 연습 기회 제공</li>
-                            </ul>
-                        </div>
-                        <div class="program-category">
-                            <h3 class="category-title">
-                                <svg class="icon" viewBox="0 0 24 24">
-                                    <path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3L1 9l11 6 9-4.91V17h2V9L12 3z"/>
-                                </svg>
-                                특화 교육 세미나
-                            </h3>
-                            <ul class="program-list">
-                                <li><strong>공시생 합격 전략 세미나:</strong> 최근 합격자들이 전하는 시험별 합격 노하우(월 1회)</li>
-                                <li><strong>직무별 실무 역량 특강:</strong> IT, 마케팅, 금융 등 분야별 실무 스킬 세미나(월 2회)</li>
-                                <li><strong>최신 채용 트렌드 분석:</strong> 인사담당자들이 전하는 채용 시장 동향 및 준비 방법(분기 1회)</li>
-                                <li><strong>디지털 역량 강화 워크숍:</strong> 엑셀, 파워포인트, 데이터 분석 등 실무 도구 교육(월 2회)</li>
-                            </ul>
-                        </div>
-                    </div>
-                    
-                    <div class="tab-pane" id="culture-tab">
-                        <div class="program-category">
-                            <h3 class="category-title">
-                                <svg class="icon" viewBox="0 0 24 24">
-                                    <path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/>
-                                </svg>
-                                라이브 음악 공연
-                            </h3>
-                            <ul class="program-list">
-                                <li><strong>어쿠스틱 세션:</strong> 기타, 피아노 등 어쿠스틱 악기 중심의 잔잔한 공연(18:30-19:30)</li>
-                                <li><strong>인디 뮤지션 쇼케이스:</strong> 유망한 인디 뮤지션들의 다양한 장르 공연(19:30-20:30)</li>
-                                <li><strong>노량진 음악 경연대회:</strong> 수험생 및 지역 청년들의 음악 경연 프로그램(분기 1회)</li>
-                                <li><strong>버스킹 오픈 스테이지:</strong> 사전 신청을 통한 일반인 공연 기회 제공(21:30-22:30)</li>
-                            </ul>
-                        </div>
-                        <div class="program-category">
-                            <h3 class="category-title">
-                                <svg class="icon" viewBox="0 0 24 24">
-                                    <path d="M13 4v2.67l-1 1-1-1V4h2m7 7v2h-4.67l-1-1 1-1H20M6.67 11l1 1-1 1H2v-2h4.67M12 16.33l1 1V20h-2v-2.67l1-1M15 2H9v5.5l3 3 3-3V2zm7 7h-7.5l-3 3 3 3H22V9zM7.5 9H0v6h7.5l3-3-3-3zm4.5 4.5l-3 3V22h6v-5.5l-3-3z"/>
-                                </svg>
-                                퍼포밍 아트 & 무용
-                            </h3>
-                            <ul class="program-list">
-                                <li><strong>플래시 댄스 퍼포먼스:</strong> 갑작스러운 군무로 시작되는 참여형 댄스 공연(월 1회)</li>
-                                <li><strong>즉흥 연극 쇼:</strong> 관객의 제안을 받아 즉석에서 연기하는 인터랙티브 공연(월 1회)</li>
-                                <li><strong>K-pop 커버 댄스 쇼케이스:</strong> 지역 내 댄스팀들의 K-pop 커버 댄스 공연(월 2회)</li>
-                                <li><strong>스트릿 댄스 배틀:</strong> 청년 댄서들의 프리스타일 댄스 대결(월 1회)</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 추가 개선 방안 섹션 -->
-    <section class="section additional-section">
-        <div class="container">
-            <h2 class="section-title animate-fade-up">추가 개선 방안</h2>
-            
-            <div class="additional-grid">
-                <div class="additional-card animate-fade-up">
-                    <div class="additional-icon">
-                        <svg class="icon" viewBox="0 0 24 24">
-                            <path d="M14,3V5H17.59L7.76,14.83L9.17,16.24L19,6.41V10H21V3M19,19H5V5H12V3H5C3.89,3 3,3.9 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V12H19V19Z"/>
-                        </svg>
-                    </div>
-                    <h3>지역 연계 방안</h3>
-                    <ul class="additional-list">
-                        <li><strong>지역 상권 협력 프로그램</strong> - 노량진 수산시장, 지역 카페 & 식당, 학원가와 제휴</li>
-                        <li><strong>공공기관 및 교육기관 협력</strong> - 동작구청, 중앙대학교, 지역 도서관과 연계</li>
-                        <li><strong>지역 공동체 참여 확대</strong> - 주민자치위원회, 고시원 연합회, 시니어 재능기부단 운영</li>
-                        <li><strong>지역 문화 자원 활용</strong> - 사육신공원, 노들섬 문화공간, 보라매공원과 연계한 프로그램 개발</li>
-                    </ul>
-                </div>
-                
-                <div class="additional-card animate-fade-up delay-100">
-                    <div class="additional-icon">
-                        <svg class="icon" viewBox="0 0 24 24">
-                            <path d="M4 6h16v12H4V6m16 13H4a1 1 0 01-1-1V6a1 1 0 011-1h16a1 1 0 011 1v12a1 1 0 01-1 1M9 8h2v2H9V8m4 0h2v2h-2V8M9 12h2v2H9v-2m4 0h2v2h-2v-2m-4 4h8v1H9v-1z"/>
-                        </svg>
-                    </div>
-                    <h3>디지털 기술 활용 방안</h3>
-                    <ul class="additional-list">
-                        <li><strong>디지털 플랫폼 구축</strong> - 전용 모바일 앱, 실시간 이벤트 정보 알림, 가상 마켓 플레이스</li>
-                        <li><strong>현장 디지털 인프라</strong> - 무료 와이파이 존, QR코드 기반 간편 결제, 디지털 정보 키오스크</li>
-                        <li><strong>데이터 기반 운영 최적화</strong> - 방문자 동선 분석, 실시간 피드백 시스템, 프로그램 인기도 모니터링</li>
-                        <li><strong>디지털 콘텐츠 제작 및 확산</strong> - 실시간 라이브 스트리밍, 360도 가상 투어, 디지털 아카이브</li>
-                    </ul>
-                </div>
-                
-                <div class="additional-card animate-fade-up delay-200">
-                    <div class="additional-icon">
-                        <svg class="icon" viewBox="0 0 24 24">
-                            <path d="M12,2A10,10 0 0,1 22,12A10,10 0 0,1 12,22A10,10 0 0,1 2,12A10,10 0 0,1 12,2M12,4A8,8 0 0,0 4,12A8,8 0 0,0 12,20A8,8 0 0,0 20,12A8,8 0 0,0 12,4M15,6.5L16.5,8L12,12.5L8.5,9L10,7.5L12,9.5L15,6.5"/>
-                        </svg>
-                    </div>
-                    <h3>지속가능한 운영 방안</h3>
-                    <ul class="additional-list">
-                        <li><strong>친환경 운영 시스템</strong> - 다회용 식기 대여, 친환경 포장재 사용, 음식물 쓰레기 제로화</li>
-                        <li><strong>수익 모델 다각화</strong> - 부스 참가비, 후원 프로그램, 공연 티켓 판매, 굿즈 개발</li>
-                        <li><strong>상설화 준비</strong> - 성공 사례 데이터화, 지역 상권과의 협력 모델 개발, 상설 공간 확보 계획</li>
-                        <li><strong>자원봉사자 프로그램</strong> - 중앙대학교 학생, 지역 주민, 은퇴 전문가 참여 채널 구축</li>
-                    </ul>
-                </div>
-                
-                <div class="additional-card animate-fade-up delay-300">
-                    <div class="additional-icon">
-                        <svg class="icon" viewBox="0 0 24 24">
-                            <path d="M12,17.27L18.18,21L16.54,14.97L22,10.24L15.95,9.64L12,4L8.05,9.64L2,10.24L7.46,14.97L5.82,21L12,17.27Z"/>
-                        </svg>
-                    </div>
-                    <h3>특별 이벤트 계획</h3>
-                    <ul class="additional-list">
-                        <li><strong>시험 시즌 응원 프로그램</strong> - 수험생 응원 메시지 월, 합격 기원 이벤트, 합격자 축하 파티</li>
-                        <li><strong>계절별 테마 축제</strong> - 봄(벚꽃 야시장), 여름(물총 축제), 가을(수확제), 겨울(빛 축제)</li>
-                        <li><strong>지역 연계 특별 행사</strong> - 노량진수산시장 '청춘 해산물 축제', 중앙대학교 청년 창업 박람회</li>
-                        <li><strong>국제 교류 이벤트</strong> - 다국적 음식 페스티벌, 글로벌 청년 문화 교류, 유학생 참여 프로그램</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 청년 참여 섹션 -->
-    <section class="section participation-section">
-        <div class="container">
-            <h2 class="section-title animate-fade-up">청년 참여 전략</h2>
-            
-            <div class="participation-content animate-fade-up">
-                <p class="participation-intro">노량진 청춘 나이트 마켓은 단순한 행사가 아닌, 청년들이 주도하고 운영하는 문화 플랫폼을 지향합니다. 이를 위한 다양한 청년 참여 전략을 마련했습니다.</p>
-                
-                <div class="participation-items">
-                    <div class="participation-item">
-                        <div class="item-number">01</div>
-                        <div class="item-content">
-                            <h3>청년 기획단 운영</h3>
-                            <p>지역 청년 10명으로 구성된 기획단을 모집하여 프로그램 기획, 모니터링, 개선방안 도출 등 핵심 운영에 참여시킵니다. 분기별로 새로운 기획단을 모집하여 다양한 청년들의 아이디어를 반영합니다.</p>
-                        </div>
-                    </div>
-                    <div class="participation-item">
-                        <div class="item-number">02</div>
-                        <div class="item-content">
-                            <h3>청년 서포터즈 프로그램</h3>
-                            <p>20명 규모의 청년 서포터즈를 운영하여 SNS 홍보, 프로그램 지원, 방문객 안내 등의 역할을 담당하게 합니다. 참여 청년들에게는 활동비와 함께 창업 멘토링, 취업 컨설팅 등 실질적 혜택을 제공합니다.</p>
-                        </div>
-                    </div>
-                    <div class="participation-item">
-                        <div class="item-number">03</div>
-                        <div class="item-content">
-                            <h3>청년 아이디어 공모전</h3>
-                            <p>분기별로 청년 아이디어 공모전을 개최하여 나이트 마켓의 프로그램, 공간 활용, 홍보 전략 등에 대한 참신한 아이디어를 발굴합니다. 선정된 아이디어는 실제 행사에 적용하고, 제안자에게는 소정의 상금과 창업 기회를 제공합니다.</p>
-                        </div>
-                    </div>
-                    <div class="participation-item">
-                        <div class="item-number">04</div>
-                        <div class="item-content">
-                            <h3>청년 창업자 인큐베이팅</h3>
-                            <p>나이트 마켓 내 팝업 스토어 참여를 통해 청년 창업자들이 실전 경험을 쌓을 수 있도록 지원합니다. 최소 40%의 부스는 동작구 거주 청년과 중앙대학교 학생 창업팀에게 우선 배정하며, 우수 팀에게는 정규 창업 지원 프로그램 연계 기회를 제공합니다.</p>
+                    <div class="zone-detail" id="food-detail">
+                        <h3>푸드 존 및 네트워킹 공간</h3>
+                        <p>전체 공간의 25%(약 200㎡)를 푸드 존과 네트워킹 공간으로 구성합니다.</p>
+                        <div class="zone-features">
+                            <div class="feature">
+                                <h4>푸드 트럭 및 부스 운영</h4>
+                                <ul>
+                                    <li>지역 특색 푸드 트럭 (3대)</li>
+                                    <li>청년 창업 푸드 트럭 (2대)</li>
+                                    <li>핑거푸드 부스 (5개)</li>
+                                    <li>음료 바 (2개): 수제 차, 논알콜 음료</li>
+                                </ul>
+                            </div>
+                            <div class="feature">
+                                <h4>네트워킹 공간 특징</h4>
+                                <ul>
+                                    <li>테마별 테이블: 관심사별 마킹</li>
+                                    <li>개방형 커뮤니티 보드: "오늘의 주제"</li>
+                                    <li>스피드 네트워킹 존: 5분 단위 교류</li>
+                                    <li>아이디어 공유 테이블: 창업 아이디어 공유</li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -531,35 +264,16 @@
                     <span class="logo-text">NORANG<br>NIGHT</span>
                 </div>
                 <div class="footer-info">
-                    <p>&copy; 2025 노량진 청춘 야시장 | 제안자: 박용환</p>
-                    <p>동작구 정책 아이디어 공모전 제안서</p>
+                    <p>2025년 '상상이 만드는 동작' 정책 아이디어 공모</p>
+                    <p>© 2025 노량진 청춘 나이트 마켓 프로젝트</p>
                 </div>
-                <div class="footer-links">
-                    <ul>
-                        <li><a href="../index.html#intro">소개</a></li>
-                        <li><a href="current-issues.html">현황 분석</a></li>
-                        <li><a href="issues-data.html">지역 현황 데이터</a></li>
-                        <li><a href="improvements.html">개선 방안</a></li>
-                        <li><a href="benefits.html">기대 효과</a></li>
-                        <li><a href="gallery.html">인포그래픽</a></li>
-                    </ul>
-                </div>
-                <div class="footer-social">
-                    <a href="#" class="social-link">
-                        <svg class="icon" viewBox="0 0 24 24">
-                            <path d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2zm-.2 2A3.6 3.6 0 0 0 4 7.6v8.8C4 18.39 5.61 20 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6C20 5.61 18.39 4 16.4 4H7.6zm9.65 1.5a1.25 1.25 0 0 1 1.25 1.25A1.25 1.25 0 0 1 17.25 8 1.25 1.25 0 0 1 16 6.75a1.25 1.25 0 0 1 1.25-1.25zM12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5zm0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3z"/>
-                        </svg>
-                    </a>
-                    <a href="#" class="social-link">
-                        <svg class="icon" viewBox="0 0 24 24">
-                            <path d="M22.46 6c-.77.35-1.6.58-2.46.69.88-.53 1.56-1.37 1.88-2.38-.83.5-1.75.85-2.72 1.05C18.37 4.5 17.26 4 16 4c-2.35 0-4.27 1.92-4.27 4.29 0 .34.04.67.11.98C8.28 9.09 5.11 7.38 3 4.79c-.37.63-.58 1.37-.58 2.15 0 1.49.75 2.81 1.91 3.56-.71 0-1.37-.2-1.95-.5v.03c0 2.08 1.48 3.82 3.44 4.21a4.22 4.22 0 0 1-1.93.07 4.28 4.28 0 0 0 4 2.98 8.521 8.521 0 0 1-5.33 1.84c-.34 0-.68-.02-1.02-.06C3.44 20.29 5.7 21 8.12 21 16 21 20.33 14.46 20.33 8.79c0-.19 0-.37-.01-.56.84-.6 1.56-1.36 2.14-2.23z"/>
-                        </svg>
-                    </a>
-                    <a href="#" class="social-link">
-                        <svg class="icon" viewBox="0 0 24 24">
-                            <path d="M5 3h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2m13 2h-2.5A3.5 3.5 0 0 0 12 8.5V11h-2v3h2v7h3v-7h3v-3h-3V9a1 1 0 0 1 1-1h2V5z"/>
-                        </svg>
-                    </a>
+                <div class="footer-contact">
+                    <p>Contact: <a href="mailto:info@norangnight.kr">info@norangnight.kr</a></p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><img src="../svg/instagram.svg" alt="인스타그램"></a>
+                        <a href="#" class="social-link"><img src="../svg/facebook.svg" alt="페이스북"></a>
+                        <a href="#" class="social-link"><img src="../svg/twitter.svg" alt="트위터"></a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -568,71 +282,13 @@
     <!-- 백 투 탑 버튼 -->
     <div class="back-to-top" id="backToTop">
         <svg class="icon" viewBox="0 0 24 24">
-            <path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"/>
+            <path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path>
         </svg>
     </div>
 
     <!-- JavaScript 파일 연결 -->
-    <script src="../js/main.js"></script>
+    <script src="../js/menu.js"></script>
     <script src="../js/animations.js"></script>
-    
-    <script>
-        // 공간 구성 탭 이벤트 처리
-        document.addEventListener('DOMContentLoaded', function() {
-            const zoneTabs = document.querySelectorAll('.tab-btn[data-zone]');
-            const zoneContents = document.querySelectorAll('.tab-pane');
-            
-            zoneTabs.forEach(tab => {
-                tab.addEventListener('click', function() {
-                    // 모든 탭 비활성화
-                    zoneTabs.forEach(t => t.classList.remove('active'));
-                    // 현재 탭 활성화
-                    this.classList.add('active');
-                    
-                    // 모든 컨텐츠 패널 숨기기
-                    zoneContents.forEach(content => content.classList.remove('active'));
-                    // 현재 탭에 해당하는 컨텐츠 패널 표시
-                    const targetId = `${this.dataset.zone}-pane`;
-                    document.getElementById(targetId).classList.add('active');
-                });
-            });
-            
-            // 프로그램 탭 이벤트 처리
-            const programTabs = document.querySelectorAll('.tab-btn[data-program]');
-            programTabs.forEach(tab => {
-                tab.addEventListener('click', function() {
-                    // 모든 탭 비활성화
-                    programTabs.forEach(t => t.classList.remove('active'));
-                    // 현재 탭 활성화
-                    this.classList.add('active');
-                    
-                    // 모든 컨텐츠 패널 숨기기
-                    document.querySelectorAll('.tab-pane').forEach(content => content.classList.remove('active'));
-                    // 현재 탭에 해당하는 컨텐츠 패널 표시
-                    const targetId = `${this.dataset.program}-tab`;
-                    document.getElementById(targetId).classList.add('active');
-                });
-            });
-            
-            // 스크롤 애니메이션 체크
-            function checkScrollAnimation() {
-                const elements = document.querySelectorAll('.animate-fade-up, .animate-fade-right, .animate-fade-left, .animate-scale');
-                
-                elements.forEach(element => {
-                    const elementPosition = element.getBoundingClientRect().top;
-                    const windowHeight = window.innerHeight;
-                    
-                    if (elementPosition < windowHeight - 50) {
-                        element.classList.add('active');
-                    }
-                });
-            }
-            
-            // 스크롤 이벤트에 애니메이션 체크 연결
-            window.addEventListener('scroll', checkScrollAnimation);
-            // 초기 체크
-            checkScrollAnimation();
-        });
-    </script>
+    <script src="../js/improvements.js"></script>
 </body>
 </html>
