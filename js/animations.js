@@ -146,6 +146,11 @@ document.addEventListener('DOMContentLoaded', function() {
         const statNumbers = document.querySelectorAll('.stat-number');
         
         const animateValue = (element, start, end, duration) => {
+            // stat-fixed 클래스가 있으면 애니메이션 적용하지 않음
+            if (element.classList.contains('stat-fixed')) {
+                return;
+            }
+            
             const range = end - start;
             const increment = end > start ? 1 : -1;
             const stepTime = Math.abs(Math.floor(duration / range));
@@ -172,6 +177,13 @@ document.addEventListener('DOMContentLoaded', function() {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     const element = entry.target;
+                    
+                    // stat-fixed 클래스가 있는 요소는 스킵
+                    if (element.classList.contains('stat-fixed')) {
+                        observer.unobserve(element);
+                        return;
+                    }
+                    
                     const finalValue = parseInt(element.getAttribute('data-count'));
                     animateValue(element, 0, finalValue, 2000);
                     observer.unobserve(element);
@@ -295,13 +307,22 @@ document.addEventListener('DOMContentLoaded', function() {
         const tabBtns = document.querySelectorAll('.tab-btn');
         const tabPanes = document.querySelectorAll('.tab-pane');
         
+        // 이 페이지에 탭이 없거나 탭 구조가 다르면 함수 실행 중단
+        if (tabBtns.length === 0 || tabPanes.length === 0) return;
+        
         tabBtns.forEach(btn => {
+            // 이미 클릭 이벤트가 있는지 확인 (중복 방지)
+            if (btn.getAttribute('data-has-click-handler')) return;
+            
+            btn.setAttribute('data-has-click-handler', 'true');
             btn.addEventListener('click', function() {
-                const tabId = this.getAttribute('data-tab');
+                // data-tab 또는 data-program 속성 확인
+                const tabId = this.getAttribute('data-tab') || this.getAttribute('data-program') + '-tab';
                 const activePane = document.querySelector('.tab-pane.active');
                 const targetPane = document.getElementById(tabId);
                 
-                if (activePane === targetPane) return;
+                // 타겟 패널이 없거나 이미 활성화된 경우 중단
+                if (!targetPane || !activePane || activePane === targetPane) return;
                 
                 // 현재 활성 탭 페이드 아웃
                 activePane.style.opacity = '0';

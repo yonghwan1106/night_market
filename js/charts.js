@@ -175,4 +175,117 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }
+    
+    // 정신건강 차트 - benefits.html 페이지
+    if(document.getElementById('mentalHealthChart')) {
+        const mentalHealthCtx = document.getElementById('mentalHealthChart').getContext('2d');
+        const mentalHealthChart = new Chart(mentalHealthCtx, {
+            type: 'bar',
+            data: {
+                labels: ['스트레스 인지율', '우울감 경험률', '사회적 고립감', '지역 소속감'],
+                datasets: [
+                    {
+                        label: '현재',
+                        data: [37, 25, 42, 15],
+                        backgroundColor: '#FF6384',
+                        borderWidth: 1
+                    },
+                    {
+                        label: '6개월 후 예상',
+                        data: [30, 21, 32, 33],
+                        backgroundColor: '#36A2EB',
+                        borderWidth: 1
+                    },
+                    {
+                        label: '12개월 후 예상',
+                        data: [19, 10, 15, 49],
+                        backgroundColor: '#4BC0C0',
+                        borderWidth: 1
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: 50,
+                        title: {
+                            display: true,
+                            text: '비율 (%)'
+                        }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        position: 'bottom'
+                    },
+                    title: {
+                        display: true,
+                        text: '청년 정신건강 지표 변화 예측'
+                    }
+                }
+            }
+        });
+    }
+    
+    // 경제 활성화 차트 - benefits.html 페이지
+    if(document.getElementById('economicChart')) {
+        const economicCtx = document.getElementById('economicChart').getContext('2d');
+        const economicChart = new Chart(economicCtx, {
+            type: 'line',
+            data: {
+                labels: ['현재', '3개월 후', '6개월 후', '12개월 후'],
+                datasets: [
+                    {
+                        label: '야간 시간대 매출',
+                        data: [100, 110, 118, 122],
+                        borderColor: '#FF6384',
+                        backgroundColor: 'rgba(255, 99, 132, 0.1)',
+                        fill: true,
+                        tension: 0.4
+                    },
+                    {
+                        label: '지역 상권 유동인구',
+                        data: [100, 112, 120, 128],
+                        borderColor: '#36A2EB',
+                        backgroundColor: 'rgba(54, 162, 235, 0.1)',
+                        fill: true,
+                        tension: 0.4
+                    },
+                    {
+                        label: '청년 창업 기회',
+                        data: [100, 120, 140, 160],
+                        borderColor: '#FFCE56',
+                        backgroundColor: 'rgba(255, 206, 86, 0.1)',
+                        fill: true,
+                        tension: 0.4
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: {
+                        beginAtZero: false,
+                        min: 90,
+                        max: 170,
+                        title: {
+                            display: true,
+                            text: '현재 대비 지수 (%)'
+                        }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        position: 'bottom'
+                    },
+                    title: {
+                        display: true,
+                        text: '야시장 운영 후 경제적 효과 예측'
+                    }
+                }
+            }
+        });
+    }
 });
