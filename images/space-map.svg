@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="500" viewBox="0 0 800 500" xmlns="http://www.w3.org/2000/svg">
+  <!-- 배경 -->
+  <rect x="0" y="0" width="800" height="500" fill="#202026" />
+  
+  <!-- 주요 도로 -->
+  <path d="M50,250 L750,250" stroke="#444" stroke-width="25" />
+  <path d="M400,50 L400,450" stroke="#444" stroke-width="15" />
+  
+  <!-- 노량진역 마커 -->
+  <circle cx="400" cy="250" r="20" fill="#FF6B6B" />
+  <text x="400" y="300" text-anchor="middle" fill="white" font-family="Noto Sans KR" font-size="16">노량진역</text>
+  
+  <!-- 청년 창업자 팝업 스토어 존 -->
+  <g id="startup-zone">
+    <rect x="150" y="60" width="200" height="160" rx="10" fill="#FF6B6B" fill-opacity="0.5" stroke="#FF6B6B" stroke-width="2" />
+    <text x="250" y="150" text-anchor="middle" fill="white" font-family="Noto Sans KR" font-size="14"> </text>
+  </g>
+  
+  <!-- 취업 정보 공유 존 -->
+  <g id="job-zone">
+    <rect x="450" y="60" width="200" height="160" rx="10" fill="#36A2EB" fill-opacity="0.5" stroke="#36A2EB" stroke-width="2" />
+    <text x="550" y="150" text-anchor="middle" fill="white" font-family="Noto Sans KR" font-size="14"> </text>
+  </g>
+  
+  <!-- 문화 공연 존 -->
+  <g id="culture-zone">
+    <rect x="450" y="280" width="200" height="160" rx="10" fill="#FFCE56" fill-opacity="0.5" stroke="#FFCE56" stroke-width="2" />
+    <text x="550" y="370" text-anchor="middle" fill="white" font-family="Noto Sans KR" font-size="14"> </text>
+  </g>
+  
+  <!-- 푸드 존 및 네트워킹 공간 -->
+  <g id="food-zone">
+    <rect x="150" y="280" width="200" height="160" rx="10" fill="#4BC0C0" fill-opacity="0.5" stroke="#4BC0C0" stroke-width="2" />
+    <text x="250" y="370" text-anchor="middle" fill="white" font-family="Noto Sans KR" font-size="14"> </text>
+  </g>
+  
+  <!-- 주요 건물 표시 -->
+  <rect x="50" y="100" width="60" height="80" fill="#666" />
+  <text x="80" y="150" text-anchor="middle" fill="white" font-family="Noto Sans KR" font-size="10">메가스터디</text>
+  
+  <rect x="680" y="100" width="60" height="80" fill="#666" />
+  <text x="710" y="150" text-anchor="middle" fill="white" font-family="Noto Sans KR" font-size="10">학원가</text>
+  
+  <!-- 범례 -->
+  <rect x="650" y="430" width="15" height="15" fill="#FF6B6B" fill-opacity="0.5" stroke="#FF6B6B" />
+  <text x="670" y="443" fill="white" font-family="Noto Sans KR" font-size="12">창업 존</text>
+  
+  <rect x="650" y="450" width="15" height="15" fill="#36A2EB" fill-opacity="0.5" stroke="#36A2EB" />
+  <text x="670" y="463" fill="white" font-family="Noto Sans KR" font-size="12">취업 존</text>
+  
+  <rect x="720" y="430" width="15" height="15" fill="#FFCE56" fill-opacity="0.5" stroke="#FFCE56" />
+  <text x="740" y="443" fill="white" font-family="Noto Sans KR" font-size="12">공연 존</text>
+  
+  <rect x="720" y="450" width="15" height="15" fill="#4BC0C0" fill-opacity="0.5" stroke="#4BC0C0" />
+  <text x="740" y="463" fill="white" font-family="Noto Sans KR" font-size="12">푸드 존</text>
+</svg>
