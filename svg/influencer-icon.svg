@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="64px" height="64px" viewBox="0 0 64 64" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g fill="#FF6B6B" fill-rule="nonzero">
+            <!-- Person/Creator -->
+            <circle cx="32" cy="18" r="10"/>
+            
+            <!-- Camera/Phone frame -->
+            <rect x="16" y="30" width="32" height="24" rx="2" ry="2"/>
+            
+            <!-- Camera lens -->
+            <circle cx="32" cy="38" r="6"/>
+            
+            <!-- Camera flash -->
+            <path d="M38,34l4-4l4,4l-4,4z"/>
+            
+            <!-- Social network connections -->
+            <circle cx="16" cy="44" r="3"/>
+            <circle cx="48" cy="44" r="3"/>
+            <circle cx="24" cy="52" r="3"/>
+            <circle cx="40" cy="52" r="3"/>
+            
+            <!-- Connection lines -->
+            <path d="M32,48L17,44"/>
+            <path d="M32,48L47,44"/>
+            <path d="M32,48L25,51"/>
+            <path d="M32,48L39,51"/>
+            
+            <!-- Stars/Engagement -->
+            <path d="M12,24l1.5,3l3.5,0.5l-2.5,2.5l0.5,3.5l-3-1.5l-3,1.5l0.5-3.5l-2.5-2.5l3.5-0.5z"/>
+            <path d="M52,24l1.5,3l3.5,0.5l-2.5,2.5l0.5,3.5l-3-1.5l-3,1.5l0.5-3.5l-2.5-2.5l3.5-0.5z"/>
+        </g>
+    </g>
+</svg>
