@@ -1,0 +1,112 @@
+/* Map Overlay 및 Zone 스타일 추가 */
+
+.map-overlay {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+/* 영역 스타일 */
+.zone {
+    position: relative;
+    flex: 1 1 50%;
+    min-width: 220px;
+    min-height: 250px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.zone::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 0.4;
+    transition: opacity 0.3s ease;
+}
+
+.zone-startup::before {
+    background-color: #FF6B6B;
+}
+
+.zone-job::before {
+    background-color: #36A2EB;
+}
+
+.zone-culture::before {
+    background-color: #FFCE56;
+}
+
+.zone-food::before {
+    background-color: #4BC0C0;
+}
+
+.zone:hover::before, .zone.active::before {
+    opacity: 0.6;
+}
+
+.zone-label {
+    position: relative;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 700;
+    text-align: center;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    z-index: 1;
+    padding: 15px;
+    border-radius: 8px;
+    background-color: rgba(0, 0, 0, 0.3);
+    transform: scale(1);
+    transition: transform 0.3s ease;
+}
+
+.zone:hover .zone-label, .zone.active .zone-label {
+    transform: scale(1.1);
+}
+
+/* Back to Top 버튼 스타일 */
+.back-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+    background-color: var(--primary);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease, background-color 0.3s ease;
+    z-index: 1000;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    transform: translateY(-3px);
+    background-color: var(--primary-dark);
+}
+
+.back-to-top .icon {
+    fill: white;
+    width: 24px;
+    height: 24px;
+}

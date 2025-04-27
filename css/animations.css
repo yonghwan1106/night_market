@@ -507,3 +507,118 @@
 .smooth-scroll {
     scroll-behavior: smooth;
 }
+ 
+/* 탭 전환 애니메이션 */
+.tab-pane {
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+.tab-pane.fade-out {
+    opacity: 0;
+    transform: translateY(10px);
+}
+
+.tab-pane.fade-in {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* 탭 버튼 애니메이션 */
+.tab-btn {
+    position: relative;
+    transition: all 0.3s ease;
+    overflow: hidden;
+}
+
+.tab-btn::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--primary-color);
+    transition: width 0.3s ease;
+}
+
+.tab-btn:hover::before {
+    width: 100%;
+}
+
+.tab-btn.active::before {
+    width: 100%;
+}
+
+/* 카테고리 항목 호버 효과 */
+.program-list li {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    padding: 8px 0;
+}
+
+.program-list li:hover {
+    transform: translateX(5px);
+}
+
+/* 프로그램 이미지 호버 효과 */
+.program-image img {
+    transition: transform 0.5s ease;
+}
+
+.program-image:hover img {
+    transform: scale(1.03);
+}
+
+/* 추가 카드 호버 효과 */
+.additional-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.additional-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+}
+
+/* 참여 아이템 호버 효과 */
+.participation-item {
+    transition: transform 0.3s ease;
+}
+
+.participation-item:hover {
+    transform: translateX(5px);
+}
+
+/* 백 투 탑 버튼 애니메이션 */
+.back-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+    background-color: var(--primary-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+    z-index: 1000;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    transform: translateY(-3px);
+    background-color: var(--primary-dark);
+}
+
+.back-to-top .icon {
+    fill: white;
+    width: 24px;
+    height: 24px;
+}
